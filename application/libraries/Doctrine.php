@@ -10,7 +10,7 @@ class Doctrine
         // Carrega e aplica as configurações de banco de dados
         require APPPATH . 'config/database.php';
         $connection_options = array(
-            'driver'        => 'pdo_mysql',
+            'driver'        => 'pdo_pgsql',
             'user'          => $db['default']['username'],
             'password'      => $db['default']['password'],
             'host'          => $db['default']['hostname'],

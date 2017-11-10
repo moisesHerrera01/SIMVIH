@@ -7,13 +7,14 @@
 class Categoria
 {
     /**
-    * @Id
-    * @GeneratedValue(strategy="AUTO")
-    * @Column(type="integer", name="idCategoria")
+    * @ORM\Column(type="integer", name="idCategoria", nullable=false)
+    * @ORM\Id
+    * @ORM\GeneratedValue(strategy="SEQUENCE")
+    * @ORM\SequenceGenerator(sequenceName="public.categoria_idCategoria_seq", allocationSize=1,initialValue=1)
     */
     protected $id;
     /**
-    * @Column(type="string", name="nomeCategoria")
+    * @ORM\Column(type="string", name="nomeCategoria")
     */
     protected $nome;
     public function getId()
