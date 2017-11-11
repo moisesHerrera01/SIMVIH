@@ -1,4 +1,5 @@
 <?php namespace Entity;
+
 /**
 *
 * @Entity
@@ -7,14 +8,13 @@
 class Categoria
 {
     /**
-    * @ORM\Column(type="integer", name="idCategoria", nullable=false)
-    * @ORM\Id
-    * @ORM\GeneratedValue(strategy="SEQUENCE")
-    * @ORM\SequenceGenerator(sequenceName="public.categoria_idCategoria_seq", allocationSize=1,initialValue=1)
+    * @Column(type="integer", name="id_categoria", nullable=false)
+    * @Id
+    * @GeneratedValue(strategy="IDENTITY")
     */
     protected $id;
     /**
-    * @ORM\Column(type="string", name="nomeCategoria")
+    * @Column(type="string", name="nome_categoria")
     */
     protected $nome;
     public function getId()

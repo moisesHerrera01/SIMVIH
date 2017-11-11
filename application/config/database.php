@@ -80,6 +80,7 @@ $db['default'] = array(
 	'password' => '12345',
 	'database' => 'doctrine',
 	'dbdriver' => 'pdo_pgsql',
+	'port'     => 5432,
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
