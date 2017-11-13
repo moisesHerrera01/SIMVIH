@@ -1,4 +1,6 @@
-<?php namespace Entity;
+<?php
+namespace Entity;
+use Doctrine\Mapping as ORM;
 
 /**
 *
@@ -14,7 +16,7 @@ class Usuario
     */
     protected $id;
     /**
-    * @Column(type="string", name="nombre_usuario", nullable=false)
+    * @Column(type="string", name="nombre_usuario", nullable=false, unique=true)
     */
     protected $nombre;
     /**

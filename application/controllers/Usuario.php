@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Usuario extends CI_Controller {
 	public function add()
 	{
-		$this->load->library('encrypt');
+		$this->load->library('encryption');
 
 			$rol = new Entity\Rol();
 			$rol->setNombre('Otro');
@@ -11,8 +11,8 @@ class Usuario extends CI_Controller {
 			$this->doctrine->em->flush();
 
 			$usuario = new Entity\Usuario();
-			$usuario->setNombre('moises.herrera');
-			$password=$this->encrypt->encode('holamundo');
+			$usuario->setNombre('moises.criollo');
+			$password=$this->encryption->encrypt('holamundo');
 			$usuario->setPassword($password);
 			$usuario->setActivo('si');
 			$usuario->setRol($rol);

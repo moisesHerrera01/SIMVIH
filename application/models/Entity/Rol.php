@@ -1,5 +1,6 @@
-<?php namespace Entity;
-
+<?php
+namespace Entity;
+use Doctrine\Mapping as ORM;
 /**
 *
 * @Entity
