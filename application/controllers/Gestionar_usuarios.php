@@ -10,6 +10,9 @@ class gestionar_usuarios extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('gestionar_usuarios_view');
+		/*//Prueba de consumo de ws
+		$exp = json_decode(file_get_contents('http://localhost/restserver/index.php/expedientes/expedientes/format/json'));
+		var_dump($exp);*/
 	}
 
 	public function create()
@@ -37,6 +40,5 @@ class gestionar_usuarios extends CI_Controller {
 		{
 			$this->load->view('gestionar_usuarios_view');
 		}
-
 	}
 }
