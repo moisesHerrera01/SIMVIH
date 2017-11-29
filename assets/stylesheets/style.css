@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Cinzel';
+    font-style: normal;
+    font-weight: normal;
+    src: local('fonts/Cinzel.ttf')
+}
+
+.login-header {
+    background-image: url('../images/portada.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    height: 44%;
+    width: 100%;
+}
+
+.login-header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: auto;
+}
+
+.login-content {
+    background-color: #E2E8E7;
+    height: 56%;
+    padding: 0.5em;
+    width: 100%;
+}
+
+.login-footer {
+    display: flex;
+    width: 100%;
+}
+
+.login-footer p{
+    margin: 3em auto;
+}
