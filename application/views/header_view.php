@@ -6,17 +6,24 @@
 </head>
 <body>
 
-<? if(!$this->session->userdata('logged_in')) :?>
+<?php if($this->session->userdata('logged_in')) :?>
 	<div class="ui left fixed vertical inverted menu">
 	<div class="item">
 		<!-- <img class="ui mini image" src="/images/logo.png"> -->
 		<h2 class="ui inverted header">SIMVIH</h2>
 	</div>
-	<a class="item" data-vivaldi-spatnav-clickable="1">Features</a>
-	<a class="item" data-vivaldi-spatnav-clickable="1">Testimonials</a>
-	<a class="item" data-vivaldi-spatnav-clickable="1">Sign-in</a>
+	<a class="item">Features</a>
+	<div class="ui inverted item accordion">
+		<div class="title">
+			Administración
+		</div>
+		<div class="content">
+			<a href="<?=base_url("/gestionar_usuarios")?>" class="item">Gestionar usuarios</a>		
+		</div>
 	</div>
-<? endif ?>
+	<a href="<?= base_url("/Login/logout") ?>" class="item">Logout</a>
+	</div>
+<?php endif ?>
 
 
 <div class="header_content">

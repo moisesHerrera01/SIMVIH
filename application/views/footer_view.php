@@ -1,7 +1,7 @@
 
-<div class="footer-container">
+<footer>
 	<p>Creado por SHLDevelop</p>
-</div>
+</footer>
 
 <script src="<?= base_url('assets/javascripts/jquery-1.11.3.min.js') ?>"></script>
 <script src="<?= base_url('assets/semantic/dist/semantic.min.js') ?>"></script>

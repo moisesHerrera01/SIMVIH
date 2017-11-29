@@ -5,6 +5,23 @@
     src: local('fonts/Cinzel.ttf')
 }
 
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    background-color: #1B1C1D;
+    color: #E2E8E7;
+    text-align: center;    
+    width: 100%;
+}
+
+section {
+    flex: 1;
+}
+
 .login-header {
     background-image: url('../images/portada.png');
     background-repeat: no-repeat;
