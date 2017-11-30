@@ -2,8 +2,12 @@
 
 <section>
   <div class="ui text container segment">
-    <h1 class"ui header">Gesión de pacientes</h1>
+    <h1 class"ui header">Gestión de pacientes</h1>
     <?php
+         $template = array(
+        'table_open' => '<table border="1" cellpadding="2" cellspacing="1" class="ui single line celled table">'
+      );
+       $this->table->set_template($template);
     echo validation_errors();
     echo form_open('Gestionar_pacientes/create', array('class' => 'ui form'));
 
@@ -64,9 +68,19 @@
       echo form_submit('','Crear paciente', $button);
          
     echo form_close();
+
+  $this->table->set_heading('N° exp','Fecha de diagnostico','Clinica','Vía de contagio');
+  foreach ($pacientes as $p) {
+      $this->table->add_row($p->getNumero(),date("d-m-Y",strtotime($p->getFecha())),$p->getClinica()->getNombre(),$p->getVia()->getNombre());
+  }
     ?>
   </div>
-
+</section>
+<section>
+       
+<?=
+ $this->table->generate() 
+?>
 </section>
 
 <?= $this->load->view('footer_view', '', TRUE) ?>

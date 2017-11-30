@@ -28,4 +28,9 @@ class Gestionar_pacientes_model extends CI_Model
 		$status = $this->em->flush();
 		return true;
 	}
+	public function getPacientes(){
+		$pacientes = $this->em->getRepository('Entity\\Paciente');
+		$pcts = $pacientes->findAll();
+		return $pcts;
+	}
 }
