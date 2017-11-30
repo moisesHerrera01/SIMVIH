@@ -20,7 +20,7 @@
 
 <?= $this->table->generate() ?>
 
-<a href=<?= $this->config->base_url()."Consultar_expediente" ?>>Atras</a>
+<a href=<?= $this->config->base_url()."Consultar_expediente/index/".$numero_exp ?>>Atras</a>
 
 </section>
 

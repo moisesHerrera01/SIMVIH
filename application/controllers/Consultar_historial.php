@@ -9,11 +9,11 @@ class Consultar_historial extends CI_Controller {
 
 	public function index()
 	{
-		$hist = json_decode(file_get_contents('http://localhost/restserver/index.php/historiales/historiales/numero/666/format/json'));
+		$exp = $this->uri->segment(3);
+		$hist = json_decode(file_get_contents('http://localhost/restserver/index.php/historiales/historiales/numero/'.$exp.'/format/json'));
 		$data['expediente'] = $hist;
+		$data['numero_exp'] = $exp;
 		
-		$this->load->view('consultar_historial_view', $data);
-		//Prueba de consumo de ws
-		
+		$this->load->view('consultar_historial_view', $data);	
 	}
 }

@@ -9,12 +9,10 @@ class Consultar_expediente extends CI_Controller {
 
 	public function index()
 	{
-		$exp = json_decode(file_get_contents('http://localhost/restserver/index.php/expedientes/expedientes/numero/666/format/json'));
+		$numero_exp = $this->uri->segment(3);
+		$exp = json_decode(file_get_contents('http://localhost/restserver/index.php/expedientes/expedientes/numero/'.$numero_exp.'/format/json'));
 		$data['expediente'] = $exp;
 		
 		$this->load->view('consultar_expediente_view', $data);
-		//Prueba de consumo de ws
-		
-		//var_dump($exp);
 	}
 }

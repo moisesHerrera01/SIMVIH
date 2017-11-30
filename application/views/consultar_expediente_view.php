@@ -24,7 +24,9 @@
 
 <?= $this->table->generate() ?>
 
-<a href=<?=$this->config->base_url()."Consultar_historial"?>>Historial del paciente</a>
+<a href=<?=$this->config->base_url()."Consultar_historial/index/".$expediente->numero_expediente?>>Historial del paciente</a>
+
+<Br><a href=<?=$this->config->base_url()."Gestionar_pacientes"?>>Atras</a></Br>
 
 </section>
 

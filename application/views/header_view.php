@@ -13,7 +13,6 @@
 		<!-- <img class="ui mini image" src="/images/logo.png"> -->
 		<h2 class="logo-sistem">SIMVIH</h2>
 	</div>
-	<a href="<?=base_url("/Consultar_expediente")?>" class="item">Expediente</a>
 	<a href="<?=base_url("/gestionar_pacientes")?>" class="item">Gestionar Pacientes</a>
 	<div class="ui inverted item accordion">
 		<div class="title">
