@@ -10,9 +10,9 @@
 	<div class="ui left fixed vertical inverted menu">
 	<div class="item">
 		<!-- <img class="ui mini image" src="/images/logo.png"> -->
-		<h2 class="ui inverted header">SIMVIH</h2>
+		<h2 class="header-sistem">SIMVIH</h2>
 	</div>
-	<a class="item">Features</a>
+	<a href="<?=base_url("/Consultar_expediente")?>" class="item">Expediente</a>
 	<div class="ui inverted item accordion">
 		<div class="title">
 			Administración

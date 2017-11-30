@@ -4,7 +4,7 @@
 
 <div class="login-content">
   <div class="ui center aligned container" style="width:25em">
-    <h1 class="ui header">Login</h1>
+    <h1 class="header-sistem">SIMVIH</h1>
     <?php echo validation_errors(); ?>
     <?php echo form_open('Login/trigger', array('class' => 'ui form'));?>
       <div class="field">

@@ -2,7 +2,7 @@
     font-family: 'Cinzel';
     font-style: normal;
     font-weight: normal;
-    src: local('fonts/Cinzel.ttf')
+    src: url('../fonts/Cinzel.ttf')
 }
 
 body {
@@ -20,6 +20,10 @@ footer {
 
 section {
     flex: 1;
+    left: 210px;
+    padding: 0.5em;
+    position: relative;
+    width: calc(100% - 210px);
 }
 
 .login-header {
@@ -31,9 +35,9 @@ section {
     width: 100%;
 }
 
-.login-header h1 {
+.header-sistem {
     font-family: 'Cinzel', serif;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bold;
     letter-spacing: 2px;
     margin: auto;

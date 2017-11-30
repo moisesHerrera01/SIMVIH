@@ -2,7 +2,7 @@
 
 <section>
   <div class="ui text container segment">
-    <h1>Gesión de usuarios de SIMVIH</h1>
+    <h1 class"ui header">Gesión de usuarios de SIMVIH</h1>
     <?php echo validation_errors(); ?>
     <?php echo form_open('Gestionar_usuarios/create', array('class' => 'ui form'));?>
       <div class="field">
