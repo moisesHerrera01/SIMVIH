@@ -69,7 +69,7 @@
          
     echo form_close();
 
-  $this->table->set_heading('N° exp','Fecha de diagnostico','Clinica','Vía de contagio');
+  $this->table->set_heading('N° expediente','Fecha de diagnostico','Clinica','Vía de contagio');
   foreach ($pacientes as $p) {
       $this->table->add_row($p->getNumero(),date("d-m-Y",strtotime($p->getFecha())),$p->getClinica()->getNombre(),$p->getVia()->getNombre());
   }
