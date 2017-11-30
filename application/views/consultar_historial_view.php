@@ -6,13 +6,8 @@
  $this->table->set_template($template);
 
  foreach ($expediente as $d) {
- 	$title = array('data' => "Historial del paciente: ", 'colspan' => "2");
-    $this->table->add_row($title);
-	$this->table->add_row('Medico que atendió: ', $d->medico_atendio);
-	$this->table->add_row('Diagnostico:', $d->diagnostico);
-	$this->table->add_row('Fecha de la consulta:', date("d-m-Y",strtotime($d->fecha_consulta)));
-	$this->table->add_row('Motivo de la consulta: ', $d->motivo_consulta);
-	$this->table->add_row('Peso(lb): ', $d->peso); 	
+    $this->table->set_heading('Fecha','motivo','Peso(lb)','Medico','Diagnostico');
+	$this->table->add_row(date("d-m-Y",strtotime($d->fecha_consulta)),$d->motivo_consulta, $d->peso, $d->medico_atendio, $d->diagnostico);
  }
 
 ?>
@@ -20,7 +15,7 @@
 <section>
 
 <div class="ui top attached tabular menu">
-  <h2 class="ui header item">Consultar historial</h2>
+  <h2 class="ui header item">Historial del paciente</h2>
 </div>
 
 <?= $this->table->generate() ?>

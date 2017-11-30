@@ -19,7 +19,7 @@
 <section>
 
 <div class="ui top attached tabular menu">
-  <h2 class="ui header item">Consultar expediente</h2>
+  <h2 class="ui header item">Expediente clinico general</h2>
 </div>
 
 <?= $this->table->generate() ?>
