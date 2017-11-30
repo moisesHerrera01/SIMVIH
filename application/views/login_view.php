@@ -8,10 +8,10 @@
     <?php echo validation_errors(); ?>
     <?php echo form_open('Login/trigger', array('class' => 'ui form'));?>
       <div class="field">
-        <input type="text" name="uname" value="" placeholder="Username">
+        <input type="text" name="uname" value="" placeholder="Nombre de usuario">
       </div>
       <div class="field">
-        <input type="password" name="pw" value="" placeholder="Password">
+        <input type="password" name="pw" value="" placeholder="Contraseña">
       </div>
       <div class="field">
         <input type="submit" class="ui fluid primary button" name="commit" value="Login">

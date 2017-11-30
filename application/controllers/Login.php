@@ -9,7 +9,11 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('login_view');
+		if ($this->session->userdata('logged_in')){
+			redirect('dashboard/');
+		} else {
+			$this->load->view('login_view');
+		}
 	}
 
 	public function trigger()
@@ -44,5 +48,5 @@ class Login extends CI_Controller {
 		  session_destroy();
 		  redirect('/login', 'refresh');
 		}
-	  }
+	}
 }

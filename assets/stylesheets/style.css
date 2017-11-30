@@ -43,6 +43,11 @@ section {
     margin: auto;
 }
 
+.logo-sistem {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+}
+
 .login-content {
     background-color: #E2E8E7;
     height: 56%;
