@@ -25,4 +25,9 @@ class Gestionar_pacientes extends CI_Controller {
 		redirect($this->config->base_url()."Gestionar_pacientes");
 	
 	}
+	public function addEnfermedad(){
+		$data['id_paciente'] = 1;
+		$data['id_enfermedad_oportunista'] = 1;
+		$this->Gestionar_pacientes_model->addEnfermedad($data); 
+	}
 }

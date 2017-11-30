@@ -69,9 +69,10 @@
          
     echo form_close();
 
-  $this->table->set_heading('N° expediente','Fecha de diagnostico','Clinica','Vía de contagio');
+  $this->table->set_heading('N° expediente','Fecha de diagnostico','Clinica','Vía de contagio','Enfermedades');
   foreach ($pacientes as $p) {
-      $this->table->add_row($p->getNumero(),date("d-m-Y",strtotime($p->getFecha())),$p->getClinica()->getNombre(),$p->getVia()->getNombre());
+      $enf = '<a href='.$this->config->base_url().'Enfermedades_oportunistas/index/'.$p->getId().'>Enfermedades</a>';
+      $this->table->add_row($p->getNumero(),date("d-m-Y",strtotime($p->getFecha())),$p->getClinica()->getNombre(),$p->getVia()->getNombre(),$enf);
   }
     ?>
   </div>

@@ -33,4 +33,16 @@ class Gestionar_pacientes_model extends CI_Model
 		$pcts = $pacientes->findAll();
 		return $pcts;
 	}
+
+	public function addEnfermedad($data){
+		    $enf= $this->em->find('Entity\\EnfermedadOportunista',$data['id_enfermedad']);
+    		$p= $this->em->find('Entity\\Paciente',$data['id_paciente']);
+    		$p->addEnfermedad($enf);
+    		$status = $this->em->flush();
+	}
+
+	public function getEnfermedades($id_paciente){
+		$paciente= $this->em->find('Entity\\Paciente',$id_paciente);
+		return $paciente->getEnfermedades();
+	}
 }
