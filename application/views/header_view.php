@@ -15,7 +15,20 @@
 		<!-- <img class="ui mini image" src="/images/logo.png"> -->
 		<h2 class="logo-sistem">SIMVIH</h2>
 	</div>
+	<a href="<?=base_url("/gestionar_antiretroviral")?>" class="item">Gestionar Antiretroviral</a>
 	<a href="<?=base_url("/gestionar_pacientes")?>" class="item">Gestionar Pacientes</a>
+	<a href="<?=base_url("/gestionar_estado_pacientes")?>" class="item">Gestionar Estado de Pacientes</a>
+	<a href="<?=base_url("/gestionar_cumplimiento")?>" class="item">Gestionar Cumplimiento</a>
+	<a href="<?=base_url("/enfermedades_oportunistas")?>" class="item">Enfermedades oportunistas</a>
+	<div class="ui inverted item accordion">
+		<div class="title">
+			Reportes
+		</div>
+		<div class="content">
+			<a href="<?=base_url("/Reportes/Reporte_pacientes")?>" class="item">Reporte paciente</a>
+		</div>
+	</div>
+
 	<div class="ui inverted item accordion">
 		<div class="title">
 			Administración
