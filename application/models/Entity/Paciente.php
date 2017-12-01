@@ -41,6 +41,10 @@ class Paciente
         inverseJoinColumns={@JoinColumn(name="id_enfermedades_oportunistas", referencedColumnName="id_enfermedades_oportunistas")})
      **/
      private $enfermedades;
+     /**
+     * @OneToMany(targetEntity="PacienteEstado", mappedBy="paciente")
+     */
+     private $estados;
 
      /**
      * Tag constructor.
@@ -48,6 +52,7 @@ class Paciente
     public function __construct()
     {
         $this->enfermedades = new ArrayCollection();
+        $this->estados = new ArrayCollection();
     }
     public function getId()
     {
