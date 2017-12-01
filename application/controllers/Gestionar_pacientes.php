@@ -22,7 +22,7 @@ class Gestionar_pacientes extends CI_Controller {
 		$data['via_transmision'] = $this->input->post('via_transmision');
 		$result = $this->Gestionar_pacientes_model->createPaciente($data);
 
-		redirect($this->config->base_url()."Gestionar_pacientes");
+		redirect($this->config->base_url()."Gestionar_pacientes/index/success/");
 	
 	}
 	public function addEnfermedad(){

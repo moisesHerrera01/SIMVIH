@@ -32,7 +32,7 @@ class Login extends CI_Controller {
 			}
 			else
 			{
-				redirect($this->config->base_url()."Login");
+				redirect($this->config->base_url()."Login/index/error/");
 			}
 		}
 		else

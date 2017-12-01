@@ -1,6 +1,15 @@
 <?= $this->load->view('header_view', array('titulo' => 'Login' ), TRUE) ?>
+<?php $error = $this->uri->segment(3)?>
 
 <div class="login-header"></div>
+
+<div class="ui hidden message" id="mensajeError">
+  <i class="close icon"></i>
+  <div class="header">
+    El usuario o la contraseña es incorrecta
+  </div>
+  <p>Por favor, intente de nuevo</p>
+</div>
 
 <div class="login-content">
   <div class="ui center aligned container" style="width:25em">
@@ -23,6 +32,21 @@
     <p>Creado por SHLDevelop</p>
   </div>
 
+
+<script>
+
+  $(document).ready(function () {
+    //alert("<?= $this->uri->segment(3)?>");
+    if ("<?= $this->uri->segment(3)?>" == "error"){
+      $("#mensajeError").removeClass("hidden");
+      $("#mensajeError").addClass("red");
+    }else{
+
+    }
+  });
+
+
+</script>
 </div>
 
 </html>

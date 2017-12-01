@@ -1,5 +1,18 @@
 <?= $this->load->view('header_view', array('titulo' => 'Gestión de pacientes' ), TRUE) ?>
-
+<br>
+<div class="ui grid">
+  <div class="ui five wide column"></div>
+  <div class="ui eight wide column">
+    <div class="ui hidden message" id="mensajeError">
+      <i class="close icon"></i>
+      <div class="header ">
+        El paciente se ingreso correctamente
+      </div>
+      <p></p>
+    </div>
+  </div>
+</div>
+<br>
 <section>
   <div class="ui text container segment">
     <h1 class"ui header">Gestión de pacientes</h1>
@@ -84,5 +97,18 @@
  $this->table->generate() 
 ?>
 </section>
+<script>
 
+  $(document).ready(function () {
+    //alert("<?= $this->uri->segment(3)?>");
+    if ("<?= $this->uri->segment(3)?>" == "success"){
+      $("#mensajeError").removeClass("hidden");
+      $("#mensajeError").addClass("green");
+    }else{
+
+    }
+  });
+
+
+</script>
 <?= $this->load->view('footer_view', '', TRUE) ?>
