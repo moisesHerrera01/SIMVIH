@@ -11,7 +11,10 @@ class Gestionar_pacientes extends CI_Controller {
 	public function index()
 	{
 		$pacientes = $this->Gestionar_pacientes_model->getPacientes();
-		$data  = array('pacientes' => $pacientes);
+		$vias = $this->Gestionar_pacientes_model->getViasTransmision();
+		$clinicas = $this->Gestionar_pacientes_model->getClinicas();
+
+		$data  = array('pacientes' => $pacientes, 'vias' => $vias, 'clinicas' => $clinicas);
 		$this->load->view('gestionar_pacientes_view', $data);
 	}
 

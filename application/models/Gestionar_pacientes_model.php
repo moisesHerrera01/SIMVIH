@@ -45,4 +45,15 @@ class Gestionar_pacientes_model extends CI_Model
 		$paciente= $this->em->find('Entity\\Paciente',$id_paciente);
 		return $paciente->getEnfermedades();
 	}
+
+	public function getClinicas(){
+		$clinicas = $this->em->getRepository('Entity\\Clinica');
+		$clics = $clinicas->findAll();
+		return $clics;
+	}
+	public function getViasTransmision(){
+		$vias = $this->em->getRepository('Entity\\ViaTransmision');
+		$vs = $vias->findAll();
+		return $vs;
+	}
 }
