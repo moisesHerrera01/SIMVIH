@@ -6,16 +6,19 @@ class Gestionar_antiretroviral extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('Gestionar_antiretrovirales_model');
 	}
 
 	public function index()
 	{
-		$this->load->view('gestionar_antiretroviral_view');
+		$data = array(
+			'antiretrovirales' => $this->Gestionar_antiretrovirales_model->getAntiretroviral(),
+		);
+		$this->load->view('gestionar_antiretroviral_view', $data);
 	}
 
 	public function create(){
-        $this->load->model('Gestionar_antiretrovirales_model');
-        
+
         $data['nombre_antiretroviral'] = $this->input->post('nombre');
 		$data['abreviatura_antiretroviral'] = $this->input->post('abreviatura');
 		$data['descripcion_antiretroviral'] = $this->input->post('descripcion');

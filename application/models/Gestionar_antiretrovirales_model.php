@@ -14,8 +14,8 @@ class Gestionar_antiretrovirales_model extends CI_Model
 		$this->em = $this->doctrine->em;
 	}
 
-	public function createAntiretroviral($data)
-	{
+	public function createAntiretroviral($data) {
+
         $antiretroviral = new Entity\Antiretroviral();
 
         $antiretroviral->setNombre($data['nombre_antiretroviral']);
@@ -25,5 +25,13 @@ class Gestionar_antiretrovirales_model extends CI_Model
         $this->em->persist($antiretroviral);
         $status = $this->em->flush();
         return true;
+	}
+
+	public function getAntiretroviral() {
+		
+		$antiretrovirales = $this->em->getRepository('Entity\\Antiretroviral');
+		$arvs = $antiretrovirales->findAll();
+		return $arvs;
+
 	}
 }

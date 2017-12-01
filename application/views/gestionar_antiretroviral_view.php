@@ -50,8 +50,26 @@
         echo form_submit('','Crear antiretroviral', $button);
          
     echo form_close();
+
+    $template = array(
+        'table_open' => '<table class="ui single line celled table">'
+    );
+    $this->table->set_template($template);
+    
+    $this->table->set_heading('N° antiretroviral','Nombre', 'Abreviatura', 'Descripción');
+    
+    foreach ($antiretrovirales as $antiretroviral) {
+        $this->table->add_row(
+            $antiretroviral->getId(),
+            $antiretroviral->getNombre(),
+            $antiretroviral->getAbreviatura(),
+            $antiretroviral->getDescripcion()
+        );
+    }
     ?>
   </div>
+
+  <?= $this->table->generate() ?>
 
 </section>
 
