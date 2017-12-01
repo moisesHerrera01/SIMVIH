@@ -69,11 +69,12 @@
          
     echo form_close();
 
-  $this->table->set_heading('N° expediente','Fecha de diagnostico','Clinica','Vía de contagio','Enfermedades','Expediente');
+  $this->table->set_heading('N° expediente','Fecha de diagnostico','Clinica','Vía de contagio','Enfermedades','Expediente','Historial');
   foreach ($pacientes as $p) {
       $enf = '<a href='.$this->config->base_url().'Enfermedades_oportunistas/index/'.$p->getId().'>Enfermedades</a>';
       $exp = '<a href='.$this->config->base_url().'Consultar_expediente/index/'.$p->getNumero().'>Expediente</a>';
-      $this->table->add_row($p->getNumero(),date("d-m-Y",strtotime($p->getFecha())),$p->getClinica()->getNombre(),$p->getVia()->getNombre(),$enf,$exp);
+      $est = '<a href='.$this->config->base_url().'Gestionar_estado_pacientes/index/'.$p->getId().'>Historial</a>';
+      $this->table->add_row($p->getNumero(),date("d-m-Y",strtotime($p->getFecha())),$p->getClinica()->getNombre(),$p->getVia()->getNombre(),$enf,$exp,$est);
   }
     ?>
   </div>

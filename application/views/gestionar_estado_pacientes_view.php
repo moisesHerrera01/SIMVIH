@@ -61,9 +61,11 @@
       ); 
 
       $esq = array(
-          'name' => 'arv',
-          'placeholder' => 'Esquema de ARV',
+        'default' => 'Esquema de ARV'
       );
+      foreach ($arvs as $ar) {
+        $esq[$ar->getId()] = $ar->getNombre().' ('.$ar->getAbreviatura().')';
+      }
 
       $camb = array(
       'default' => 'Criterio de cambio ARV',
@@ -91,10 +93,11 @@
       );
 
       $gra = array(
-          'name' => 'grado',
-          'placeholder' => 'Grado de autonomía',
-      ); 
-
+        'default' => 'Grado de autonomía'
+      );
+      foreach ($grds as $gr) {
+        $gra[$gr->getId()] = 'Deambulación: '.$gr->getDeambulacion().', Alimentación: '.$gr->getAlimentacion().', Aseo: '.$gr->getAseo();
+      }
 
         $atriLabel = array('class' => 'col-lg-2 control-label');
         $button = array('class' => 'ui primary button');
@@ -153,7 +156,7 @@
       echo "<div class='field'>";
       echo form_label('Esquema de ARV:', 'esq', $atriLabel);
         echo "<div>";
-          echo form_input($esq);
+          echo form_dropdown('esquema', $esq, 'default',$select);
         echo "</div>";
       echo "</div>";
 
@@ -181,10 +184,11 @@
       echo "<div class='field'>";
       echo form_label('Grado autonomía:', 'gra', $atriLabel);
         echo "<div>";
-          echo form_input($gra);
+         echo form_dropdown('grado', $gra, 'default',$select);
         echo "</div>";
       echo "</div>";
 
+      echo form_hidden('id_paciente', $id_paciente);
       echo form_submit('','Agregar', $button);
          
     echo form_close();

@@ -102,6 +102,14 @@ class PacienteEstado
     {
         $this->paciente = $paciente;
     }
+    public function getServicio()
+    {
+        return $this->servicio;
+    }
+    public function setServicio($servicio)
+    {
+        $this->servicio = $servicio;
+    }
     public function getEstado()
     {
         return $this->estado;

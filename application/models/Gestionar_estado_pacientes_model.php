@@ -2,8 +2,9 @@
 
 require_once(APPPATH."models/Entity/Paciente.php");
 require_once(APPPATH."models/Entity/PacienteEstado.php");
+require_once(APPPATH."models/Entity/GradoAutonomia.php");
 
-class Gestionar_estado_pacientes extends CI_Model
+class Gestionar_estado_pacientes_model extends CI_Model
 {
 	private $em;
 
@@ -13,36 +14,35 @@ class Gestionar_estado_pacientes extends CI_Model
 		$this->em = $this->doctrine->em;
 	}
 
-	public function createEstadoPaciente($data)
-	{
-    $via= $this->em->find('Entity\\ViaTransmision',$data['via_transmision']);
-    $clinica= $this->em->find('Entity\\Clinica',$data['clinica']);
+	public function createEstadoPaciente($data){
+	    $grado= $this->em->find('Entity\\GradoAutonomia',$data['grado']);
+	    $arv= $this->em->find('Entity\\Antiretroviral',$data['esquema']);
+	    $paciente = $this->em->find('Entity\\Paciente',$data['id_paciente']);
 
-	$paciente = new Entity\Paciente();
+		$pEstado = new Entity\PacienteEstado();
 
-    $paciente->setNumero($data['numero_expediente']);
-	$paciente->setFecha($data['fecha_diagnostico']);
-	$paciente->setClinica($clinica);
-    $paciente->setVia($via);
-		$this->em->persist($paciente);
+	    $pEstado->setPeso($data['peso']);
+		$pEstado->setIngresos($data['hosp']);
+		$pEstado->setPaciente($paciente);
+		$pEstado->setServicio($data['servicio']);	
+	    $pEstado->setEstado($data['estado']);
+	    $pEstado->setArv($arv);
+	    $pEstado->setClasificacion($data['clasificacion']);
+	    $pEstado->setCriterioArv($data['criterio_arv']);
+	    $pEstado->setCriterioCambioArv($data['cambio_arv']);
+	    $pEstado->setTipo($data['tipo']);
+	    $pEstado->setEgreso($data['egreso']);
+	    $pEstado->setMedico($data['med']);
+	    $pEstado->setGrado($grado);
+
+		$this->em->persist($pEstado);
 		$status = $this->em->flush();
 		return true;
 	}
-	public function getPacientes(){
-		$pacientes = $this->em->getRepository('Entity\\Paciente');
-		$pcts = $pacientes->findAll();
-		return $pcts;
-	}
 
-	public function addEnfermedad($data){
-		    $enf= $this->em->find('Entity\\EnfermedadOportunista',$data['id_enfermedad']);
-    		$p= $this->em->find('Entity\\Paciente',$data['id_paciente']);
-    		$p->addEnfermedad($enf);
-    		$status = $this->em->flush();
-	}
-
-	public function getEnfermedades($id_paciente){
-		$paciente= $this->em->find('Entity\\Paciente',$id_paciente);
-		return $paciente->getEnfermedades();
+	public function getGradoAutonomia(){
+		$grados = $this->em->getRepository('Entity\\GradoAutonomia');
+		$grds = $grados->findAll();
+		return $grds;
 	}
 }
