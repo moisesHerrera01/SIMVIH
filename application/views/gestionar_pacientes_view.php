@@ -35,20 +35,26 @@
           'type' => "date"
       );
 
+
+
       $cli = array(
-        'name' => 'clinica',
-        'placeholder' => 'Ingrese la clinica',
+        'default' => 'Ingrese la clinica'
       );
+      foreach ($clinicas as $cl) {
+        $cli[$cl->getId()] = $cl->getNombre();
+      }
 
       $via = array(
-          'name' => 'via_transmision',
-          'placeholder' => 'Ingrese la vía de contagio',
+          'default' => 'Ingrese la vía de contagio'
       );
+      foreach ($vias as $v) {
+        $via[$v->getId()] = $v->getNombre();
+      }
 
 
         $atriLabel = array('class' => 'col-lg-2 control-label');
         $button = array('class' => 'ui primary button');
-
+        $select = array('class'=>"ui fluid dropdown");  
 
       echo "<div class='field'>";
         echo form_label('Numero expediente:', 'num', $atriLabel);
@@ -67,14 +73,14 @@
       echo "<div class='field'>";
       echo form_label('Clinica:', 'cli', $atriLabel);
         echo "<div>";
-          echo form_input($cli);
+          echo form_dropdown('clinica', $cli, 'default',$select);
         echo "</div>";
       echo "</div>";
 
       echo "<div class='field'>";
       echo form_label('Vía de contagio:', 'via', $atriLabel);
         echo "<div>";
-          echo form_input($via);
+          echo form_dropdown('via_transmision', $via, 'default',$select);
         echo "</div>";
       echo "</div>";
 
@@ -82,11 +88,12 @@
          
     echo form_close();
 
-  $this->table->set_heading('N° expediente','Fecha de diagnostico','Clinica','Vía de contagio','Enfermedades','Expediente');
+  $this->table->set_heading('N° expediente','Fecha de diagnostico','Clinica','Vía de contagio','Enfermedades','Expediente','Historial');
   foreach ($pacientes as $p) {
       $enf = '<a href='.$this->config->base_url().'Enfermedades_oportunistas/index/'.$p->getId().'>Enfermedades</a>';
       $exp = '<a href='.$this->config->base_url().'Consultar_expediente/index/'.$p->getNumero().'>Expediente</a>';
-      $this->table->add_row($p->getNumero(),date("d-m-Y",strtotime($p->getFecha())),$p->getClinica()->getNombre(),$p->getVia()->getNombre(),$enf,$exp);
+      $est = '<a href='.$this->config->base_url().'Gestionar_estado_pacientes/index/'.$p->getId().'>Historial</a>';
+      $this->table->add_row($p->getNumero(),date("d-m-Y",strtotime($p->getFecha())),$p->getClinica()->getNombre(),$p->getVia()->getNombre(),$enf,$exp,$est);
   }
     ?>
   </div>

@@ -45,4 +45,31 @@ class Gestionar_pacientes_model extends CI_Model
 		$paciente= $this->em->find('Entity\\Paciente',$id_paciente);
 		return $paciente->getEnfermedades();
 	}
+
+	public function getClinicas(){
+		$clinicas = $this->em->getRepository('Entity\\Clinica');
+		$clics = $clinicas->findAll();
+		return $clics;
+	}
+	public function getViasTransmision(){
+		$vias = $this->em->getRepository('Entity\\ViaTransmision');
+		$vs = $vias->findAll();
+		return $vs;
+	}
+
+	public function getReportePaciente($id) {
+
+		$paciente = $this->em->createQueryBuilder()
+						->select('a, b, c, d')
+						->from('Entity\\Paciente', 'a')
+						->innerJoin('a.clinica', 'b')
+						->innerJoin('a.via', 'c')
+						->innerJoin('Entity\\PacienteEstado', 'd', 'WITH', 'a.id = d.paciente')
+						->where('a.id = ?1')
+						->setParameter(1, $id)
+						->getQuery()
+						->execute();
+		
+		return $paciente;
+	}
 }

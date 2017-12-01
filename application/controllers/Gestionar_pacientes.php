@@ -11,7 +11,10 @@ class Gestionar_pacientes extends CI_Controller {
 	public function index()
 	{
 		$pacientes = $this->Gestionar_pacientes_model->getPacientes();
-		$data  = array('pacientes' => $pacientes);
+		$vias = $this->Gestionar_pacientes_model->getViasTransmision();
+		$clinicas = $this->Gestionar_pacientes_model->getClinicas();
+
+		$data  = array('pacientes' => $pacientes, 'vias' => $vias, 'clinicas' => $clinicas);
 		$this->load->view('gestionar_pacientes_view', $data);
 	}
 
@@ -24,10 +27,5 @@ class Gestionar_pacientes extends CI_Controller {
 
 		redirect($this->config->base_url()."Gestionar_pacientes/index/success/");
 	
-	}
-	public function addEnfermedad(){
-		$data['id_paciente'] = 1;
-		$data['id_enfermedad_oportunista'] = 1;
-		$this->Gestionar_pacientes_model->addEnfermedad($data); 
 	}
 }
