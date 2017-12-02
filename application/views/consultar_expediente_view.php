@@ -16,7 +16,7 @@
 		$this->table->add_row('Estado civil: ', $expediente->estado_civil);
 		$this->table->add_row('Dirección: ', $expediente->direccion); 		
 	}else{
-		redirect($this->config->base_url()."Gestionar_pacientes");
+		redirect($this->config->base_url()."Gestionar_pacientes/index/error_data");
 	}
 
 ?>
