@@ -6,7 +6,9 @@ $(document).ready(function () {
 
     $('.ui.checkbox').checkbox();
 
-    $('.ui.radio.checkbox').checkbox();
+	$('.ui.radio.checkbox').checkbox();
+	
+	$('.menu .item, .direction').tab();
 
     $('.message .close')
   	.on('click', function() {

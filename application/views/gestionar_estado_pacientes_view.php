@@ -99,97 +99,119 @@
         $gra[$gr->getId()] = 'Deambulación: '.$gr->getDeambulacion().', Alimentación: '.$gr->getAlimentacion().', Aseo: '.$gr->getAseo();
       }
 
-        $atriLabel = array('class' => 'col-lg-2 control-label');
-        $button = array('class' => 'ui primary button');
-        $select = array('class'=>"ui fluid dropdown");
+      $atriLabel = array('class' => 'col-lg-2 control-label');
+      $button = array('class' => 'ui primary button');
+      $select = array('class'=>"ui fluid dropdown");
 
+      echo '<div class="ui top attached tabular menu">';
+        echo '<a class="item active" data-tab="first">Paso 1:</a>';
+        echo '<a class="item" data-tab="second">Paso 2:</a>';
+        echo '<a class="item" data-tab="third">Paso 3:</a>';
+      echo '</div>';
 
-      echo "<div class='field'>";
-        echo form_label('Peso:', 'peso', $atriLabel);
-        echo "<div>";
-          echo form_input($peso);
+      echo '<div class="ui bottom attached tab segment active" data-tab="first">';
+        echo "<div class='field'>";
+          echo form_label('Peso:', 'peso', $atriLabel);
+          echo "<div>";
+            echo form_input($peso);
+          echo "</div>";
         echo "</div>";
-      echo "</div>";
 
-      echo "<div class='field'>";
-        echo form_label('Hospitaliziaciones:', 'hosp', $atriLabel);
-        echo "<div>";
-          echo form_input($hosp);
+        echo "<div class='field'>";
+          echo form_label('Hospitaliziaciones:', 'hosp', $atriLabel);
+          echo "<div>";
+            echo form_input($hosp);
+          echo "</div>";
         echo "</div>";
-      echo "</div>";
 
-      echo "<div class='field'>";
-      echo form_label('Servicio:', 'serv', $atriLabel);
-        echo "<div>";
-          echo form_dropdown('servicio', $serv, 'default',$select);
+        echo "<div class='field'>";
+          echo form_label('Servicio:', 'serv', $atriLabel);
+          echo "<div>";
+            echo form_dropdown('servicio', $serv, 'default',$select);
+          echo "</div>";
         echo "</div>";
-      echo "</div>";
 
-      echo "<div class='field'>";
-      echo form_label('Tipo de paciente:', 'tip', $atriLabel);
-        echo "<div>";
-          echo form_dropdown('tipo', $tip, 'default',$select);
+        echo "<div class='field'>";
+          echo form_label('Tipo de paciente:', 'tip', $atriLabel);
+          echo "<div>";
+            echo form_dropdown('tipo', $tip, 'default',$select);
+          echo "</div>";
         echo "</div>";
-      echo "</div>";
 
-      echo "<div class='field'>";
-      echo form_label('Clasificación según OMS:', 'cla', $atriLabel);
-        echo "<div>";
-        echo form_dropdown('clasificacion', $cla, 'default',$select);
+        echo '<a class="ui positive button direction" data-tab="second">Siguiente</a>';
+
+      echo '</div>';
+      
+      echo '<div class="ui bottom attached tab segment" data-tab="second">';
+      
+        echo "<div class='field'>";
+          echo form_label('Clasificación según OMS:', 'cla', $atriLabel);
+          echo "<div>";
+            echo form_dropdown('clasificacion', $cla, 'default',$select);
+          echo "</div>";
         echo "</div>";
-      echo "</div>";
 
-           echo "<div class='field'>";
-      echo form_label('Estado actual:', 'est', $atriLabel);
-        echo "<div>";
-           echo form_dropdown('estado', $est, 'default',$select);
+        echo "<div class='field'>";
+          echo form_label('Estado actual:', 'est', $atriLabel);
+          echo "<div>";
+            echo form_dropdown('estado', $est, 'default',$select);
+          echo "</div>";
         echo "</div>";
-      echo "</div>";
 
-      echo "<div class='field'>";
-      echo form_label('Criterio para ARV:', 'arv', $atriLabel);
-        echo "<div>";
-          echo form_dropdown('cri', $arv, 'default',$select);
+        echo "<div class='field'>";
+          echo form_label('Criterio para ARV:', 'arv', $atriLabel);
+          echo "<div>";
+            echo form_dropdown('cri', $arv, 'default',$select);
+          echo "</div>";
         echo "</div>";
-      echo "</div>";
 
-      echo "<div class='field'>";
-      echo form_label('Esquema de ARV:', 'esq', $atriLabel);
-        echo "<div>";
-          echo form_dropdown('esquema', $esq, 'default',$select);
+        echo "<div class='field'>";
+          echo form_label('Esquema de ARV:', 'esq', $atriLabel);
+          echo "<div>";
+            echo form_dropdown('esquema', $esq, 'default',$select);
+          echo "</div>";
         echo "</div>";
-      echo "</div>";
 
-      echo "<div class='field'>";
-      echo form_label('Criterio de cambio ARV:', 'camb', $atriLabel);
-        echo "<div>";
-          echo form_dropdown('camb', $camb, 'default',$select);
+        echo '<a class="ui positive button direction" data-tab="first">Anterior</a>';
+        echo '<a class="ui positive button direction" data-tab="third">Siguiente</a>';
+
+      echo '</div>';
+
+      echo '<div class="ui bottom attached tab segment" data-tab="third">';
+      
+        echo "<div class='field'>";
+          echo form_label('Criterio de cambio ARV:', 'camb', $atriLabel);
+          echo "<div>";
+            echo form_dropdown('camb', $camb, 'default',$select);
+          echo "</div>";
         echo "</div>";
-      echo "</div>";
 
-      echo "<div class='field'>";
-      echo form_label('Criterio de egreso de ARV:', 'egr', $atriLabel);
-        echo "<div>";
-          echo form_dropdown('egreso', $egr, 'default',$select);
+        echo "<div class='field'>";
+          echo form_label('Criterio de egreso de ARV:', 'egr', $atriLabel);
+          echo "<div>";
+            echo form_dropdown('egreso', $egr, 'default',$select);
+          echo "</div>";
         echo "</div>";
-      echo "</div>";
 
-      echo "<div class='field'>";
-      echo form_label('Médico responsable:', 'med', $atriLabel);
-        echo "<div>";
-          echo form_input($med);
+        echo "<div class='field'>";
+          echo form_label('Médico responsable:', 'med', $atriLabel);
+          echo "<div>";
+            echo form_input($med);
+          echo "</div>";
         echo "</div>";
-      echo "</div>";
 
-      echo "<div class='field'>";
-      echo form_label('Grado autonomía:', 'gra', $atriLabel);
-        echo "<div>";
-         echo form_dropdown('grado', $gra, 'default',$select);
+        echo "<div class='field'>";
+          echo form_label('Grado autonomía:', 'gra', $atriLabel);
+          echo "<div>";
+            echo form_dropdown('grado', $gra, 'default',$select);
+          echo "</div>";
         echo "</div>";
-      echo "</div>";
 
-      echo form_hidden('id_paciente', $id_paciente);
-      echo form_submit('','Agregar', $button);
+        echo form_hidden('id_paciente', $id_paciente);
+        echo '<a class="ui positive button direction" data-tab="second">Anterior</a>';
+        echo form_submit('','Agregar', $button);
+
+      echo '</div>';
          
     echo form_close();
    ?>
