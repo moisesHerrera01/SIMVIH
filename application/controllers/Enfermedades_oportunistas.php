@@ -12,7 +12,8 @@ class Enfermedades_oportunistas extends CI_Controller {
 	{
 		$id_paciente = $this->uri->segment(3);
 		$enf = $this->Gestionar_pacientes_model->getEnfermedades($id_paciente);
-		$data  = array('enfermedades' => $enf,'id_paciente' => $id_paciente);
+		$enfs = $this->Gestionar_pacientes_model->getEnfermedadesAll();
+		$data  = array('enfermedades' => $enf,'id_paciente' => $id_paciente, 'enfermedades_all' => $enfs);
 		$this->load->view('enfermedades_oportunistas_view', $data);
 	}
 

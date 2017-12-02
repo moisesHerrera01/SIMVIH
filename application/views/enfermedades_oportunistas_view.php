@@ -12,15 +12,20 @@
     echo form_open('Enfermedades_oportunistas/addEnfermedad', array('class' => 'ui form'));
 
       $enf = array(
-          'name' => 'id_enfermedad',
-          'placeholder' => 'Ingrese la enfermedad',
+          'default' => 'Ingrese la enfermedad',
       );
+
+      foreach ($enfermedades_all as $e) {
+        $enf[$e->getId()] = $e->getNombre();
+      }
+
+        $select = array('class'=>"ui fluid dropdown");
         $atriLabel = array('class' => 'col-lg-2 control-label');
         $button = array('class' => 'ui primary button');
       echo "<div class='field'>";
         echo form_label('Enfermedad:', 'enf', $atriLabel);
         echo "<div>";
-          echo form_input($enf);
+          echo form_dropdown('id_enfermedad', $enf, 'default',$select);
         echo "</div>";
       echo "</div>";
 
@@ -37,9 +42,8 @@
 </section>
 <section>
        
-<?=
- $this->table->generate() 
-?>
+<?= $this->table->generate() ?>
+<a href=<?= $this->config->base_url()."Gestionar_pacientes/" ?>>Atras</a>
 </section>
 
 <?= $this->load->view('footer_view', '', TRUE) ?>
