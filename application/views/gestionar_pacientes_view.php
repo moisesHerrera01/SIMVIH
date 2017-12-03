@@ -10,6 +10,13 @@
       </div>
       <p></p>
     </div>
+        <div class="ui hidden message" id="error">
+      <i class="close icon"></i>
+      <div class="header ">
+        El paciente no posee expediente general
+      </div>
+      <p></p>
+    </div>
   </div>
 </div>
 <br>
@@ -111,8 +118,10 @@
     if ("<?= $this->uri->segment(3)?>" == "success"){
       $("#mensajeError").removeClass("hidden");
       $("#mensajeError").addClass("green");
-    }else{
 
+    }else if ("<?= $this->uri->segment(3)?>" == "error_data"){
+      $("#error").removeClass("hidden");
+      $("#error").addClass("red");
     }
   });
 

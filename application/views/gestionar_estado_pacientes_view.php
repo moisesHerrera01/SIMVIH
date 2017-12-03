@@ -216,5 +216,6 @@
     echo form_close();
    ?>
   </div>
+  <a href=<?= $this->config->base_url()."Gestionar_pacientes/" ?>>Atras</a>
 </section>
 <?= $this->load->view('footer_view', '', TRUE) ?>
