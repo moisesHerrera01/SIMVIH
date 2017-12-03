@@ -3,7 +3,7 @@
 <div class="ui grid">
   <div class="ui five wide column"></div>
   <div class="ui eight wide column">
-    <div class="ui hidden message" id="mensajeError">
+    <div class="ui hidden message" id="mensajeSuccess">
       <i class="close icon"></i>
       <div class="header ">
         El usuario se creo exitosamente
@@ -16,7 +16,7 @@
 
 <section>
   <div class="ui text container segment">
-    <h1 class"ui header">Gesión de usuarios de SIMVIH</h1>
+    <h1 class"ui header">Gestión de usuarios de SIMVIH</h1>
     <?php echo validation_errors(); ?>
     <?php echo form_open('Gestionar_usuarios/create', array('class' => 'ui form'));?>
       <div class="field">
@@ -57,8 +57,8 @@
   $(document).ready(function () {
     //alert("<?= $this->uri->segment(3)?>");
     if ("<?= $this->uri->segment(3)?>" == "success"){
-      $("#mensajeError").removeClass("hidden");
-      $("#mensajeError").addClass("green");
+      $("#mensajeSuccess").removeClass("hidden");
+      $("#mensajeSuccess").addClass("green");
     }else{
 
     }

@@ -43,7 +43,7 @@ class Gestionar_cumplimiento extends CI_Controller {
         
         $result = $this->Gestionar_cumplimiento_model->createCumplimiento($data);
 
-		redirect('Gestionar_cumplimiento');
+		redirect('Gestionar_cumplimiento/index/success/');
 	
     }
 

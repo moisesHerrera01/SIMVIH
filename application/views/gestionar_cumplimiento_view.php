@@ -1,6 +1,17 @@
 <?= $this->load->view('header_view', array('titulo' => 'Gestión de cumplimiento' ), TRUE) ?>
-
 <section>
+    <div class="ui grid">
+      <div class="ui five wide column"></div>
+      <div class="ui eight wide column">
+        <div class="ui hidden message" id="mensajeSuccess">
+          <i class="close icon"></i>
+          <div class="header ">
+            El formulario se guardo exitosamente
+          </div>
+          <p></p>
+        </div>
+      </div>
+    </div>
   <div class="ui text container segment">
     <h1 class"ui header">Gestión de cumplimiento</h1>
     <?php
@@ -377,5 +388,15 @@
 ?>
 
 </section>
+<script>
 
+  $(document).ready(function () {
+    if ("<?= $this->uri->segment(3)?>" == "success"){
+      $("#mensajeSuccess").removeClass("hidden");
+      $("#mensajeSuccess").addClass("green");
+    }else{
+
+    }
+  });
+</script>
 <?= $this->load->view('footer_view', '', TRUE) ?>

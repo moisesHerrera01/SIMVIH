@@ -25,7 +25,7 @@ class Gestionar_antiretroviral extends CI_Controller {
         
         $result = $this->Gestionar_antiretrovirales_model->createAntiretroviral($data);
 
-		redirect('Gestionar_antiretroviral');
+		redirect('Gestionar_antiretroviral/index/success');
 	
 	}
 }

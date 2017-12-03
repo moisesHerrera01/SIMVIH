@@ -1,5 +1,9 @@
 <?= $this->load->view('header_view', array('titulo' => 'Login' ), TRUE) ?>
 <?php $error = $this->uri->segment(3)?>
+  
+<script src="<?= base_url('assets/javascripts/main.js') ?>"></script>
+<script src='<?= base_url('assets/javascripts/jquery-1.11.3.min.js') ?>'></script>
+<script src='<?= base_url('assets/semantic/dist/semantic.js') ?>'></script>
 
 <div class="login-header"></div>
 

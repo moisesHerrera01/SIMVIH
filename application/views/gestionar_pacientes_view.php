@@ -3,7 +3,7 @@
 <div class="ui grid">
   <div class="ui five wide column"></div>
   <div class="ui eight wide column">
-    <div class="ui hidden message" id="mensajeError">
+    <div class="ui hidden message" id="mensajeSuccess">
       <i class="close icon"></i>
       <div class="header ">
         El paciente se ingreso correctamente
@@ -116,8 +116,8 @@
   $(document).ready(function () {
     //alert("<?= $this->uri->segment(3)?>");
     if ("<?= $this->uri->segment(3)?>" == "success"){
-      $("#mensajeError").removeClass("hidden");
-      $("#mensajeError").addClass("green");
+      $("#mensajeSuccess").removeClass("hidden");
+      $("#mensajeSuccess").addClass("green");
 
     }else if ("<?= $this->uri->segment(3)?>" == "error_data"){
       $("#error").removeClass("hidden");
