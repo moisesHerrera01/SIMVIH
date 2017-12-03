@@ -371,7 +371,7 @@
             $cumplimiento->getFechaInicioCharlas()
         );
     }
-    echo "<div style='width:120px'>";
+    echo '<div style="overflow:scroll;overflow-y:hidden;width:100%;">';
         echo $this->table->generate();
     echo "</div>";
 ?>
