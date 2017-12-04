@@ -4,7 +4,6 @@
 	<link rel="icon" type="image/x-icon" href="<?= base_url("assets/images/logo-s.jpg")?>" />
 	<link href=<?= base_url("assets/semantic/dist/semantic.min.css")?> rel="stylesheet" media="screen">
 	<link href=<?= base_url("assets/stylesheets/style.css")?> rel="stylesheet" media="screen">
-	<script src="<?= base_url('assets/javascripts/jquery-1.11.3.min.js') ?>"></script>
 
 </head>
 <body>

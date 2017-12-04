@@ -24,12 +24,11 @@ class Dashboard extends CI_Controller {
 		parent::__construct();
 
 		if (!$this->session->userdata('logged_in')){
-			redirect('login/');
+			redirect('login/index/nosesion');
 		}
 	}
 
 	public function index() {
 		$this->load->view('dashboard_view');
-
 	}
 }

@@ -30,7 +30,7 @@ section {
     background-image: url('../images/portada.png');
     background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
+    /* display: flex; */
     height: 44%;
     width: 100%;
 }
