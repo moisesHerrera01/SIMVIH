@@ -26,15 +26,16 @@
 			<a href="<?=base_url("/Reportes/Reporte_pacientes")?>" class="item">Reporte paciente</a>
 		</div>
 	</div>
-
-	<div class="ui inverted item accordion">
-		<div class="title">
-			Administración
+	<?php if ( $this->session->userdata('rol') == 'Administrador' ): ?>
+		<div class="ui inverted item accordion">
+			<div class="title">
+				Administración
+			</div>
+			<div class="content">
+				<a href="<?=base_url("/gestionar_usuarios")?>" class="item">Gestionar usuarios</a>		
+			</div>
 		</div>
-		<div class="content">
-			<a href="<?=base_url("/gestionar_usuarios")?>" class="item">Gestionar usuarios</a>		
-		</div>
-	</div>
+	<?php endif ?>
 	<a href="<?= base_url("/Login/logout") ?>" class="item">Cerrar sesión</a>
 	</div>
 <?php endif ?>

@@ -24,6 +24,7 @@ class Login_model extends CI_Model
       if ($pass==$pw_plano) {
         $newdata = array(
                      'username'  => $uname,
+                     'rol' => $user->getRol()->getNombre(),
                      'logged_in' => TRUE
                  );
         $this->session->set_userdata($newdata);
