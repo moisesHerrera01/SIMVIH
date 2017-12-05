@@ -364,9 +364,12 @@
     $this->table->set_heading('N° cumplimiento', 'Paciente', 'Asesoria pre prueba', 'Asesoria post prueba', 'Asesoria pre embarazo', 
                     'Asesoria post embarazo', 'Anticonceptivo', 'Charla de contagio', 'Charla de prevención', 'Grupo de lucha',
                     'Charla de autocuidado', 'Charla de alimentación', 'Charla de educación sexual', 'Evaluación psicologíca', 'Evaluación nutricionista',
-                    'Lactancia materna', 'Fecha de prueba', 'Fecha de inicio charlas');
+                    'Lactancia materna', 'Fecha de prueba', 'Fecha de inicio charlas', 'Acciones');
     // (condition) ? 'Si' : 'No',
     foreach ($cumplimientos as $cumplimiento) {
+        $opt = '<a href= ><i data-tooltip="Editar" data-variation="tiny"><i class="large edit icon"></i></i></a>';
+        $opt .= '<a href='.base_url('gestionar_cumplimiento/remove?id='.$cumplimiento->getId()).' ><i data-tooltip="Eliminar" data-variation="tiny"><i class="large erase icon"></i></i></a>';
+
         $this->table->add_row(
             $cumplimiento->getId(),
             $cumplimiento->getPaciente()->getId(),
@@ -385,7 +388,8 @@
             ($cumplimiento->getEvaluacionNutricionista()) ? 'Si' : 'No',
             $cumplimiento->getLactanciaMaterna(),
             $cumplimiento->getFechaPrueba(),
-            $cumplimiento->getFechaInicioCharlas()
+            $cumplimiento->getFechaInicioCharlas(),
+            $opt
         );
     }
     echo '<div style="overflow:scroll;overflow-y:hidden;width:100%;">';

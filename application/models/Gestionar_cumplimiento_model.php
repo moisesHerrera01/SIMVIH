@@ -43,6 +43,12 @@ class Gestionar_cumplimiento_model extends CI_Model
         $status = $this->em->flush();
         return true;
     }
+
+    public function removeCumplimiento($id) {
+        $cumplimiento = $this->em->find('Entity\\Cumplimiento', $id);
+        $this->em->remove($cumplimiento);
+        $this->em->flush();
+    }
     
     public function getCumplimientos() {
         

@@ -95,12 +95,14 @@
          
     echo form_close();
 
-  $this->table->set_heading('N° expediente','Fecha de diagnostico','Clinica','Vía de contagio','Enfermedades','Expediente','Historial');
+  $this->table->set_heading('N° expediente','Fecha de diagnostico','Clinica','Vía de contagio','Acciones');
   foreach ($pacientes as $p) {
-      $enf = '<a href='.$this->config->base_url().'Enfermedades_oportunistas/index/'.$p->getId().'>Enfermedades</a>';
-      $exp = '<a href='.$this->config->base_url().'Consultar_expediente/index/'.$p->getNumero().'>Expediente</a>';
-      $est = '<a href='.$this->config->base_url().'Gestionar_estado_pacientes/index/'.$p->getId().'>Historial</a>';
-      $this->table->add_row($p->getNumero(),date("d-m-Y",strtotime($p->getFecha())),$p->getClinica()->getNombre(),$p->getVia()->getNombre(),$enf,$exp,$est);
+      $enf = '<a href='.$this->config->base_url().'Enfermedades_oportunistas/index/'.$p->getId().'><i data-tooltip="Enfermedades" data-variation="tiny"><i class="large heartbeat icon"></i></i></a>';
+      $exp = '<a href='.$this->config->base_url().'Consultar_expediente/index/'.$p->getNumero().'><i data-tooltip="Expediente" data-variation="tiny"><i class="large address book icon"></i></i></a>';
+      $est = '<a href='.$this->config->base_url().'Gestionar_estado_pacientes/index/'.$p->getId().'><i data-tooltip="Historial" data-variation="tiny"><i class="large address card icon"></i></i></a>';
+      $opt = '<a href= ><i data-tooltip="Editar" data-variation="tiny"><i class="large edit icon"></i></i></a>';
+      $opt .= '<a href='.base_url('Gestionar_pacientes/remove?id='.$p->getId()).' ><i data-tooltip="Eliminar" data-variation="tiny"><i class="large erase icon"></i></i></a>';
+      $this->table->add_row($p->getNumero(),date("d-m-Y",strtotime($p->getFecha())),$p->getClinica()->getNombre(),$p->getVia()->getNombre(),$enf.$exp.$est.$opt);
   }
     ?>
   </div>

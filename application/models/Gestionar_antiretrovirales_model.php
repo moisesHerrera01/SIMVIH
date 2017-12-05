@@ -44,4 +44,20 @@ class Gestionar_antiretrovirales_model extends CI_Model
 		$data['arv'] = $arv;
 		return $data;
 	}
+
+	public function removeAntiretroviral($id) {
+		
+		$antiretroviral = $this->em->find('Entity\\Antiretroviral', $id);
+
+		$estados = $this->em->getRepository('Entity\\PacienteEstado')->findBy(array('arv' => $antiretroviral));
+		
+		foreach ($estados as $estado) {
+			$this->em->remove($estado);
+		}
+
+        $this->em->remove($antiretroviral);
+        $this->em->flush();
+
+	}
+
 }
