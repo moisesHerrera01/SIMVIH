@@ -61,29 +61,22 @@
     echo form_close();
     ?>
   </div>
-
 </section>
-<?php 
-$cantidad = 0;
-if($compras_arv):
-  $this->table->set_heading('Nombre ARV','Número de producto','Cantidad compras','Cantidad consumida');
-  $this->table->add_row($arv->getNombre(), $compras_arv->numero_producto, $compras_arv->cantidad, $consumido_arv);
-elseif ($compras_arvs):
-  foreach ($consumidos as $c) {
-    foreach ($compras_arvs as $arv) {
-        if ($c['numero'] == $arv->numero_producto) :
-              $this->table->set_heading('Número de producto','Cantidad compras','Consumido');
-              $this->table->add_row($arv->numero_producto, $arv->cantidad, $c['cantidad']);         
-        endif;
+<?php
+if($this->input->get('arv')!='default' && $this->input->get('arv')!=NULL):
+  $this->table->set_heading('Nombre ARV','Abreviatura','Número de producto','Cantidad compras','Cantidad consumida');
+  $this->table->add_row($cantidad['nombre'] ,$cantidad['abreviatura'] ,$cantidad['numero'] ,$cantidad['comprado'] ,$cantidad['cantidad']);
+  echo '<section>';
+    echo $this->table->generate();
+  echo '</section>';  
+elseif ($this->input->get('arv')=='default'):
+  foreach ($cantidades as $c) {
+      $this->table->set_heading('Nombre ARV','Abreviatura','Número de producto','Cantidad compras','Consumido');
+      $this->table->add_row($c['nombre'], $c['abreviatura'], $c['numero'] , $c['comprado'] , $c['cantidad']);         
   }
-}
-  ?>
-<section>       
-<?=
-   $this->table->generate();  
+  echo '<section>';
+  echo $this->table->generate();
+echo '</section>';  
+endif
 ?>
-</section>
-<?php endif ?>
-
-
 <?= $this->load->view('footer_view', '', TRUE) ?>
