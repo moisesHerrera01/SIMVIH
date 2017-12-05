@@ -17,53 +17,61 @@ class PacienteEstado
     */
     protected $id;
     /**
-    * @Column(type="decimal", name="peso", nullable=false, unique=true)
+    * @Column(type="decimal", name="peso")
     */
     protected $peso;
     /**
     * @Column(type="integer", name="ingresos_12_meses")
     */
     protected $ingresos;
+    /**
+    * @Column(type="integer", name="cantidad_arv", nullable = false)
+    */
+    protected $cantidad_arv;
+    /**
+    * @Column(type="string", name="fecha_arv", nullable=false)
+    */
+    protected $fecha_arv;
      /**
      * @ManyToOne(targetEntity="Paciente", inversedBy="estados")
      * @JoinColumn(name="id_paciente", referencedColumnName="id_paciente")
      */
     protected $paciente;
     /**
-    * @Column(type="string", name="servicio_atencion", nullable=false, unique=true)
+     * @ManyToOne(targetEntity="Antiretroviral", inversedBy="arv_estados")
+     * @JoinColumn(name="id_esquema_arv", referencedColumnName="id_esquema_arv")
+     */
+    protected $arv;
+    /**
+    * @Column(type="string", name="servicio_atencion", nullable=false)
     */
     protected $servicio;
     /**
-    * @Column(type="string", name="estado_actual", nullable=false, unique=true)
+    * @Column(type="string", name="estado_actual", nullable=false)
     */
     protected $estado;
-     /**
-     * @OneToOne(targetEntity="Antiretroviral")
-     * @JoinColumn(name="id_esquema_arv", referencedColumnName="id_esquema_arv")
-     */
-     protected $arv;
     /**
-    * @Column(type="string", name="clasificacion_oms", nullable=false, unique=true)
+    * @Column(type="string", name="clasificacion_oms", nullable=false)
     */
     protected $clasificacion;
     /**
-    * @Column(type="string", name="criterio_arv", nullable=false, unique=true)
+    * @Column(type="string", name="criterio_arv")
     */
     protected $criterio_arv;
     /**
-    * @Column(type="string", name="criterio_cambio_arv", nullable=false, unique=true)
+    * @Column(type="string", name="criterio_cambio_arv")
     */
     protected $criterio_cambio_arv;
     /**
-    * @Column(type="string", name="tipo_paciente", nullable=false, unique=true)
+    * @Column(type="string", name="tipo_paciente", nullable=false)
     */
     protected $tipo;
     /**
-    * @Column(type="string", name="criterio_egreso_arv", nullable=false, unique=true)
+    * @Column(type="string", name="criterio_egreso_arv", nullable=false)
     */
     protected $egreso;
     /**
-    * @Column(type="string", name="medico_responsable", nullable=false, unique=true)
+    * @Column(type="string", name="medico_responsable", nullable=false)
     */
     protected $medico;
     /**
@@ -85,6 +93,22 @@ class PacienteEstado
     public function setPeso($peso)
     {
         $this->peso = $peso;
+    }
+    public function getFecha()
+    {
+        return $this->fecha_arv;
+    }    
+    public function setFecha($fecha_arv)
+    {
+        $this->fecha_arv = $fecha_arv;
+    }
+    public function getCantidad()
+    {
+        return $this->cantidad_arv;
+    }    
+    public function setCantidad($cantidad_arv)
+    {
+        $this->cantidad_arv = $cantidad_arv;
     }
     public function getIngresos()
     {

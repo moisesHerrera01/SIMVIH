@@ -20,6 +20,7 @@ class Gestionar_antiretrovirales_model extends CI_Model
 
         $antiretroviral->setNombre($data['nombre_antiretroviral']);
         $antiretroviral->setAbreviatura($data['abreviatura_antiretroviral']);
+        $antiretroviral->setNumero($data['numero']);
         $antiretroviral->setDescripcion($data['descripcion_antiretroviral']);
             
         $this->em->persist($antiretroviral);
@@ -33,5 +34,14 @@ class Gestionar_antiretrovirales_model extends CI_Model
 		$arvs = $antiretrovirales->findAll();
 		return $arvs;
 
+	}
+
+	public function getReporteMedicamentos($id_medicamento){
+		$data = array(
+			'arv' => '', 
+		);
+		$arv= $this->em->find('Entity\\Antiretroviral',$id_medicamento);
+		$data['arv'] = $arv;
+		return $data;
 	}
 }

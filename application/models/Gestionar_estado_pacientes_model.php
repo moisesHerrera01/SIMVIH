@@ -34,6 +34,8 @@ class Gestionar_estado_pacientes_model extends CI_Model
 	    $pEstado->setEgreso($data['egreso']);
 	    $pEstado->setMedico($data['med']);
 	    $pEstado->setGrado($grado);
+	    $pEstado->setFecha($data['fecha']);
+	    $pEstado->setCantidad($data['cantidad']);
 
 		$this->em->persist($pEstado);
 		$status = $this->em->flush();

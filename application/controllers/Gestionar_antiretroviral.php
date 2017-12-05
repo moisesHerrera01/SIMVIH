@@ -22,7 +22,8 @@ class Gestionar_antiretroviral extends CI_Controller {
         $data['nombre_antiretroviral'] = $this->input->post('nombre');
 		$data['abreviatura_antiretroviral'] = $this->input->post('abreviatura');
 		$data['descripcion_antiretroviral'] = $this->input->post('descripcion');
-        
+        $data['numero'] = $this->input->post('numero');
+
         $result = $this->Gestionar_antiretrovirales_model->createAntiretroviral($data);
 
 		redirect('Gestionar_antiretroviral/index/success');

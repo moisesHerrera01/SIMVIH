@@ -31,6 +31,8 @@ class Gestionar_estado_pacientes extends CI_Controller {
 		$data['med'] = $this->input->post('med');
 		$data['grado'] = $this->input->post('grado');
 		$data['id_paciente'] = $this->input->post('id_paciente');
+		$data['fecha'] = $this->input->post('fecha');
+		$data['cantidad'] = $this->input->post('cantidad');
 
 		$result = $this->Gestionar_estado_pacientes_model->createEstadoPaciente($data);
 

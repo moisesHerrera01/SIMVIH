@@ -11,6 +11,12 @@
     echo validation_errors();
     echo form_open('Gestionar_estado_pacientes/create', array('class' => 'ui form'));
 
+      $fecha = array(
+          'name' => 'fecha',
+          'placeholder' => 'Ingrese la fecha',
+          'type' => 'date'
+      );
+
       $peso = array(
           'name' => 'peso',
           'placeholder' => 'Ingrese el peso',
@@ -67,6 +73,13 @@
         $esq[$ar->getId()] = $ar->getNombre().' ('.$ar->getAbreviatura().')';
       }
 
+      $cant = array(
+        'name' => 'cantidad',
+        'placeholder' => 'Ingrese la cantidad que se administró',
+        'type' => 'number',
+
+      );
+
       $camb = array(
       'default' => 'Criterio de cambio ARV',
       'Efectos adversos' => 'Efectos adversos',
@@ -109,7 +122,15 @@
         echo '<a class="item" data-tab="third">Paso 3:</a>';
       echo '</div>';
 
+
       echo '<div class="ui bottom attached tab segment active" data-tab="first">';
+        echo "<div class='field'>";
+          echo form_label('Fecha:', 'fecha', $atriLabel);
+          echo "<div>";
+            echo form_input($fecha);
+          echo "</div>";
+        echo "</div>";
+
         echo "<div class='field'>";
           echo form_label('Peso:', 'peso', $atriLabel);
           echo "<div>";
@@ -178,6 +199,13 @@
       echo '</div>';
 
       echo '<div class="ui bottom attached tab segment" data-tab="third">';
+
+        echo "<div class='field'>";
+          echo form_label('Cantidad ARV:', 'cant', $atriLabel);
+          echo "<div>";
+            echo form_input($cant);
+          echo "</div>";
+        echo "</div>";
       
         echo "<div class='field'>";
           echo form_label('Criterio de cambio ARV:', 'camb', $atriLabel);

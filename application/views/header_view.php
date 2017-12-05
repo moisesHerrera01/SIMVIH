@@ -24,6 +24,7 @@
 		</div>
 		<div class="content">
 			<a href="<?=base_url("/Reportes/Reporte_pacientes")?>" class="item">Reporte paciente</a>
+			<a href="<?=base_url("/Reportes/Reporte_medicamentos")?>" class="item">Reporte medicamentos</a>
 		</div>
 	</div>
 	<?php if ( $this->session->userdata('rol') == 'Administrador' ): ?>

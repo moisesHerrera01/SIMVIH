@@ -30,9 +30,15 @@
             'placeholder' => 'Ingrese la abreviatura del antiretroviral'
         );
 
+        $num = array(
+            'name' => 'numero',
+            'placeholder' => 'Ingrese el número del producto'
+        );
+
         $desc = array(
             'name' => 'descripcion',
             'placeholder' => 'Ingrese la descripción del antiretroviral',
+            'rows' =>3
         );
 
         $atriLabel = array('class' => 'col-lg-2 control-label');
@@ -54,6 +60,13 @@
         echo "</div>";
 
         echo "<div class='field'>";
+            echo form_label('Número del producto:', 'num', $atriLabel);
+            echo "<div>";
+                echo form_input($num);
+            echo "</div>";
+        echo "</div>";
+
+        echo "<div class='field'>";
             echo form_label('Descripción antiretroviral:', 'desc', $atriLabel);
             echo "<div>";
                 echo form_textarea($desc);
@@ -69,13 +82,14 @@
     );
     $this->table->set_template($template);
     
-    $this->table->set_heading('N° antiretroviral','Nombre', 'Abreviatura', 'Descripción');
+    $this->table->set_heading('N° antiretroviral','Nombre', 'Abreviatura', 'Número del producto','Descripción');
     
     foreach ($antiretrovirales as $antiretroviral) {
         $this->table->add_row(
             $antiretroviral->getId(),
             $antiretroviral->getNombre(),
             $antiretroviral->getAbreviatura(),
+            $antiretroviral->getNumero(),
             $antiretroviral->getDescripcion()
         );
     }

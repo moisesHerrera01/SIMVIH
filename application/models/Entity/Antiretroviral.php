@@ -1,5 +1,6 @@
 <?php 
 namespace Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 /**
 *
 * @Entity
@@ -21,10 +22,24 @@ class Antiretroviral
     * @Column(type="string", name="abreviatura")
     */
     protected $abreviatura;
+        /**
+    * @Column(type="integer", name="numero_producto", nullable=false)
+    */
+    protected $numero;
     /**
     * @Column(type="string", name="descripcion")
     */
     protected $descripcion;
+    /**
+     * @OneToMany(targetEntity="PacienteEstado", mappedBy="arv")
+     */
+     private $arv_estados;
+
+    public function __construct()
+    {
+        $this->arv_estados = new ArrayCollection();
+    }
+
 
     public function getId()
     {
@@ -46,6 +61,14 @@ class Antiretroviral
     {
         $this->abreviatura = $abreviatura;
     }
+     public function getNumero()
+    {
+        return $this->numero;
+    }
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
+    }
     public function getDescripcion()
     {
         return $this->descripcion;
@@ -54,4 +77,8 @@ class Antiretroviral
     {
         $this->descripcion = $descripcion;
     }
+    public function getArvEstados(){
+        return $this->arv_estados->toArray();
+    }
+
 }
