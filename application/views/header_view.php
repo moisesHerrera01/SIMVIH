@@ -4,7 +4,6 @@
 	<link rel="icon" type="image/x-icon" href="<?= base_url("assets/images/logo-s.jpg")?>" />
 	<link href=<?= base_url("assets/semantic/dist/semantic.min.css")?> rel="stylesheet" media="screen">
 	<link href=<?= base_url("assets/stylesheets/style.css")?> rel="stylesheet" media="screen">
-	<script src="<?= base_url('assets/javascripts/jquery-1.11.3.min.js') ?>"></script>
 
 </head>
 <body>
@@ -25,9 +24,12 @@
 		<div class="content">
 			<a href="<?=base_url("/Reportes/Reporte_pacientes")?>" class="item">Reporte paciente</a>
 			<a href="<?=base_url("/Reportes/Reporte_medicamentos")?>" class="item">Reporte medicamentos</a>
+			<?php if ( $this->session->userdata('rol') == 'Administrador' ): ?>
+				<a href="<?=base_url("/Reportes/Reporte_normas")?>" class="item">Reporte normas</a>
+			<?php endif ?>
 		</div>
 	</div>
-	<?php if ( $this->session->userdata('rol') == 'Administrador' ): ?>
+	<?php if ( $this->session->userdata('rol') != 'Promotor' ): ?>
 		<div class="ui inverted item accordion">
 			<div class="title">
 				Administración

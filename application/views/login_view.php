@@ -1,18 +1,39 @@
 <?= $this->load->view('header_view', array('titulo' => 'Login' ), TRUE) ?>
 <?php $error = $this->uri->segment(3)?>
   
-<script src="<?= base_url('assets/javascripts/main.js') ?>"></script>
 <script src='<?= base_url('assets/javascripts/jquery-1.11.3.min.js') ?>'></script>
+<script src="<?= base_url('assets/javascripts/main.js') ?>"></script>
 <script src='<?= base_url('assets/semantic/dist/semantic.js') ?>'></script>
 
-<div class="login-header"></div>
 
-<div class="ui hidden message" id="mensajeError">
-  <i class="close icon"></i>
-  <div class="header">
-    El usuario o la contraseña es incorrecta
+<div class="login-header">
+  <div class="ui floating hidden message" id="mensajeError">
+    <i class="close icon"></i>
+    <div class="header">
+      <?php
+        switch ($this->uri->segment(3)) {
+          case 'error':
+            echo "El usuario o la contraseña es incorrecta";
+            break;
+          case 'nosesion':
+            echo "No ha iniciado sesión";
+            break;
+        }
+      ?>
+    </div>
+    <p>
+      <?php
+        switch ($this->uri->segment(3)) {
+          case 'error':
+            echo "Por favor, intente de nuevo";
+            break;
+          case 'nosesion':
+            echo "Por favor, inicie sesión";
+            break;
+        }
+      ?>
+    </p>
   </div>
-  <p>Por favor, intente de nuevo</p>
 </div>
 
 <div class="login-content">
@@ -41,7 +62,7 @@
 
   $(document).ready(function () {
     //alert("<?= $this->uri->segment(3)?>");
-    if ("<?= $this->uri->segment(3)?>" == "error"){
+    if ("<?= $this->uri->segment(3)?>" != ""){
       $("#mensajeError").removeClass("hidden");
       $("#mensajeError").addClass("red");
     }else{

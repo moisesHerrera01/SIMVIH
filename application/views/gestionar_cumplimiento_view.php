@@ -320,8 +320,14 @@
                     </div>
                     <div class="field">
                     <div class="ui radio checkbox">
-                        <input type="radio" name="lactancia_materna" value="No" checked="" tabindex="0" class="hidden">
+                        <input type="radio" name="lactancia_materna" value="No" tabindex="0" class="hidden">
                         <label>No</label>
+                    </div>
+                    </div>
+                    <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="lactancia_materna" checked="" value="No aplica" tabindex="0" class="hidden">
+                        <label>No aplica</label>
                     </div>
                     </div>
                 </div>
@@ -359,24 +365,24 @@
                     'Asesoria post embarazo', 'Anticonceptivo', 'Charla de contagio', 'Charla de prevención', 'Grupo de lucha',
                     'Charla de autocuidado', 'Charla de alimentación', 'Charla de educación sexual', 'Evaluación psicologíca', 'Evaluación nutricionista',
                     'Lactancia materna', 'Fecha de prueba', 'Fecha de inicio charlas');
-    
+    // (condition) ? 'Si' : 'No',
     foreach ($cumplimientos as $cumplimiento) {
         $this->table->add_row(
             $cumplimiento->getId(),
             $cumplimiento->getPaciente()->getId(),
-            $cumplimiento->getAsesoriaPrePrueba(),
-            $cumplimiento->getAsesoriaPostPrueba(),
+            ($cumplimiento->getAsesoriaPrePrueba()) ? 'Si' : 'No',
+            ($cumplimiento->getAsesoriaPostPrueba()) ? 'Si' : 'No',
             $cumplimiento->getAsesoriaPreEmbarazo(),
             $cumplimiento->getAsesoriaPostEmbarazo(),
-            $cumplimiento->getAnticonceptivos(),
-            $cumplimiento->getCharlaContagio(),
-            $cumplimiento->getCharlaPrevencion(),
-            $cumplimiento->getGrupoLuchaVih(),
-            $cumplimiento->getCharlaAutocuidado(),
-            $cumplimiento->getCharlaAlimentacion(),
-            $cumplimiento->getCharlaSexualidad(),
-            $cumplimiento->getEvaluacionPsicologica(),
-            $cumplimiento->getEvaluacionNutricionista(),
+            ($cumplimiento->getAnticonceptivos()) ? 'Si' : 'No',
+            ($cumplimiento->getCharlaContagio()) ? 'Si' : 'No',
+            ($cumplimiento->getCharlaPrevencion()) ? 'Si' : 'No',
+            ($cumplimiento->getGrupoLuchaVih()) ? 'Si' : 'No',
+            ($cumplimiento->getCharlaAutocuidado()) ? 'Si' : 'No',
+            ($cumplimiento->getCharlaAlimentacion()) ? 'Si' : 'No',
+            ($cumplimiento->getCharlaSexualidad()) ? 'Si' : 'No',
+            ($cumplimiento->getEvaluacionPsicologica()) ? 'Si' : 'No',
+            ($cumplimiento->getEvaluacionNutricionista()) ? 'Si' : 'No',
             $cumplimiento->getLactanciaMaterna(),
             $cumplimiento->getFechaPrueba(),
             $cumplimiento->getFechaInicioCharlas()

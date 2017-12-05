@@ -2,6 +2,28 @@
 
 <section>
 
+  <div class="ui floating <?= ($this->uri->segment(3)) ? 'visible' : 'hidden' ?> red message">
+    <i class="close icon"></i>
+    <div class="header">
+      <?php
+        switch ($this->uri->segment(3)) {
+          case 'norol':
+            echo "Ud no posee privilegios.";
+            break;
+        }
+      ?>
+    </div>
+    <p>
+      <?php
+        switch ($this->uri->segment(3)) {
+          case 'norol':
+            echo "Consulte con el administrador.";
+            break;
+        }
+      ?>
+    </p>
+  </div>
+
 <div class="ui top attached tabular menu">
   <h3 class="ui header item">Dashboard</h3>
 </div>

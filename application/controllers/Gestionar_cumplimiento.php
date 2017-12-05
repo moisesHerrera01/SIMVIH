@@ -6,6 +6,9 @@ class Gestionar_cumplimiento extends CI_Controller {
 	public function __construct()
 	{
         parent::__construct();
+        if (!$this->session->userdata('logged_in')){
+			redirect('login/index/nosesion');
+		}
         $this->load->model('Gestionar_cumplimiento_model');
 	}
 
