@@ -51,4 +51,28 @@ class Gestionar_cumplimiento_model extends CI_Model
 		return $cpls;
 
     }
+
+    public function getReporteNorma($clinica, $fecha_inicial, $fecha_final) {
+        
+        $normas = $this->em->createQueryBuilder()
+                            ->select('a, b, c')
+                            ->from('Entity\\Cumplimiento', 'a')
+                            ->innerJoin('a.paciente', 'b')
+                            ->innerJoin('b.clinica', 'c')
+                            ->where('c.id = ?1')
+                            ->where('a.fecha_prueba between ?2 AND ?3')
+                            ->setParameter( 1, $clinica )
+                            ->setParameters( array( '2' => $fecha_inicial, '3' => $fecha_final ) )
+                            ->getQuery()
+                            ->execute();
+
+        return $normas;
+
+    }
+
+    public function getClinicas() {
+        $clinica = $this->em->getRepository('Entity\\Clinica');
+		$cls = $clinica->findAll();
+		return $cls;
+    }
 }

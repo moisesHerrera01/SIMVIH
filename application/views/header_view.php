@@ -23,9 +23,12 @@
 		</div>
 		<div class="content">
 			<a href="<?=base_url("/Reportes/Reporte_pacientes")?>" class="item">Reporte paciente</a>
+			<?php if ( $this->session->userdata('rol') == 'Administrador' ): ?>
+				<a href="<?=base_url("/Reportes/Reporte_normas")?>" class="item">Reporte normas</a>
+			<?php endif ?>
 		</div>
 	</div>
-	<?php if ( $this->session->userdata('rol') == 'Administrador' ): ?>
+	<?php if ( $this->session->userdata('rol') != 'Promotor' ): ?>
 		<div class="ui inverted item accordion">
 			<div class="title">
 				Administración
