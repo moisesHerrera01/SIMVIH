@@ -32,4 +32,9 @@ class Gestionar_antiretroviral extends CI_Controller {
 		redirect('Gestionar_antiretroviral/index/success');
 	
 	}
+
+	public function remove() {
+		$this->Gestionar_antiretrovirales_model->removeAntiretroviral($this->input->get('id'));
+		redirect('Gestionar_antiretroviral/index/success');
+	}
 }

@@ -50,4 +50,9 @@ class Gestionar_cumplimiento extends CI_Controller {
 	
     }
 
+    public function remove() {
+        $this->Gestionar_cumplimiento_model->removeCumplimiento($this->input->get('id'));
+		redirect($this->config->base_url()."gestionar_cumplimiento/index/success/");
+    }
+
 }

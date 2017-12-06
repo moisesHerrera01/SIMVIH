@@ -35,7 +35,7 @@ class Paciente
      */
      protected $via;
      /**
-     * @ManyToMany(targetEntity="EnfermedadOportunista", inversedBy="pacientes")
+     * @ManyToMany(targetEntity="EnfermedadOportunista", inversedBy="pacientes", cascade={"persist", "remove"})
      * @JoinTable(name="paciente_enfermedades_oportunistas",
         joinColumns={@JoinColumn(name="id_paciente", referencedColumnName="id_paciente")},
         inverseJoinColumns={@JoinColumn(name="id_enfermedades_oportunistas", referencedColumnName="id_enfermedades_oportunistas")})

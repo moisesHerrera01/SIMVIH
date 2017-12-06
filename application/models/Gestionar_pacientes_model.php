@@ -28,6 +28,22 @@ class Gestionar_pacientes_model extends CI_Model
 		$status = $this->em->flush();
 		return true;
 	}
+
+	public function removePaciente($id_paciente) {
+		$paciente = $this->em->find('Entity\\Paciente', $id_paciente);
+
+		$cumplimiento = $this->em->getRepository('Entity\\Cumplimiento')->findBy(array('paciente' => $paciente));
+
+		$this->em->remove($cumplimiento[0]);
+		
+		foreach ($paciente->getEnfermedades() as $enfermedad) {
+			$this->em->remove($enfermedad);
+		}
+
+		$this->em->remove($paciente);
+		$this->em->flush();
+	} 
+
 	public function getPacientes(){
 		$pacientes = $this->em->getRepository('Entity\\Paciente');
 		$pcts = $pacientes->findAll();
@@ -57,6 +73,7 @@ class Gestionar_pacientes_model extends CI_Model
 		$clics = $clinicas->findAll();
 		return $clics;
 	}
+
 	public function getViasTransmision(){
 		$vias = $this->em->getRepository('Entity\\ViaTransmision');
 		$vs = $vias->findAll();

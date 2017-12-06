@@ -31,4 +31,9 @@ class Gestionar_pacientes extends CI_Controller {
 		redirect($this->config->base_url()."Gestionar_pacientes/index/success/");
 	
 	}
+
+	public function remove() {
+		$this->Gestionar_pacientes_model->removePaciente($this->input->get('id'));
+		redirect($this->config->base_url()."Gestionar_pacientes/index/success/");
+	}
 }

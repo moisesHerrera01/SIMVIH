@@ -82,15 +82,19 @@
     );
     $this->table->set_template($template);
     
-    $this->table->set_heading('N° antiretroviral','Nombre', 'Abreviatura', 'Número del producto','Descripción');
+    $this->table->set_heading('N° antiretroviral','Nombre', 'Abreviatura', 'Número del producto','Descripción','Acciones');
     
     foreach ($antiretrovirales as $antiretroviral) {
+        $opt = '<a href= ><i data-tooltip="Editar" data-variation="tiny"><i class="large edit icon"></i></i></a>';
+        $opt .= '<a href='.base_url('gestionar_antiretroviral/remove?id='.$antiretroviral->getId()).' ><i data-tooltip="Eliminar" data-variation="tiny"><i class="large erase icon"></i></i></a>';
+
         $this->table->add_row(
             $antiretroviral->getId(),
             $antiretroviral->getNombre(),
             $antiretroviral->getAbreviatura(),
             $antiretroviral->getNumero(),
-            $antiretroviral->getDescripcion()
+            $antiretroviral->getDescripcion(),
+            $opt
         );
     }
     ?>
