@@ -10,24 +10,35 @@ class Reporte_medicamentos extends CI_Controller {
 
 	public function index() {
 
-		$this->load->model('Gestionar_antiretrovirales_model');
+		$this->load->model(array('Gestionar_antiretrovirales_model', 'Gestionar_pacientes_model'));
 
 		$cantidades = false; //Array que contiene la información a mostrar de los ARV's	
 		$cantidad = false; //Array que contiene la información de un solo ARV
 		$arvs = $this->Gestionar_antiretrovirales_model->getAntiretroviral();
+		$cls = $this->Gestionar_pacientes_model->getClinicas();
 
 
-		if ($this->input->get('fecha_i') && $this->input->get('fecha_f')) {
+		if ($this->input->get('fecha_i') && $this->input->get('fecha_f') && $this->input->get('clinica')) {
+			$numero_establecimiento; //numero de establecimiento de la clinica
+			$fecha_i = $this->input->get('fecha_i');
+			$fecha_f = $this->input->get('fecha_f');
+			$id_clinica = $this->input->get('clinica');
 			if ($this->input->get('arv')=='default') { //Caso para el cual no se especifica ARV
+				$data_reporte = $this->Gestionar_antiretrovirales_model->getReporteMedicamentos($fecha_i, $fecha_f);
 				$json = 'http://localhost/restserver/index.php/compras/compras/format/json';
 				$compras_arvs  = json_decode(file_get_contents($json));
 				$consumido = array('numero'=>'','nombre'=>'','cantidad'=>'','comprado'=>'', 'abreviatura' => '');
 				$consumidos = array();
-				foreach ($arvs as $arv) {
+				foreach ($data_reporte as $arv) {
 					$total =0;
 					$estados = $arv->getArvEstados();
 					foreach ($estados as $st) {
-						$total+=$st->getCantidad();
+						$p = $st->getPaciente();
+						$c = $p->getClinica();
+						if ($c->getId() == $id_clinica) {
+							$numero_establecimiento = $c->getNumero();
+							$total+=$st->getCantidad();
+						}						
 					}
 					$consumido['numero'] = $arv->getNumero();
 					$consumido['nombre'] = $arv->getNombre();
@@ -41,7 +52,11 @@ class Reporte_medicamentos extends CI_Controller {
 					$cantidad =0;
 					foreach ($compras_arvs as $c) {
 						if ($s['numero'] == $c->numero_producto) {
-							$cantidad+=$c->cantidad;									
+							if ($c->fecha>=$fecha_i && $c->fecha<=$fecha_f) {
+								if ($c->numero_establecimiento == $numero_establecimiento) {
+									$cantidad+=$c->cantidad;
+								}		
+							}															
 					}			
 				}
 					$reemplazo = array('comprado' => $cantidad);
@@ -51,34 +66,50 @@ class Reporte_medicamentos extends CI_Controller {
 					}
 			}
 			}else{ //Caso para el cual se especifica un ARV
+				$id_arv = $this->input->get('arv');
 				$cant = 0; //Cantidad de ARV comprado
 				$consumido_arv = 0; //Cantidad de ARV consumido
-				$cantidad = array();
+				$cantidad = array(); //Array que contiene la data a enviar a la vista
 
-				$data_reporte = $this->Gestionar_antiretrovirales_model->getReporteMedicamentos($this->input->get('arv'));
-				$arv = $data_reporte['arv'];
+				$data_reporte = $this->Gestionar_antiretrovirales_model->getReporteMedicamento($id_arv, $fecha_i, $fecha_f);
+				$arv;
 				$json = 'http://localhost/restserver/index.php/compras/compras/format/json';
 				$compras_arv  = json_decode(file_get_contents($json));
+				foreach ($data_reporte['datos'] as $ar) {
+					if ($ar->getId() == $id_arv) {
+						$arv = $ar;
+					}					
+				}
 				$arv_estados = $arv->getArvEstados();
 
 				foreach ($arv_estados as $st) {
-					$consumido_arv += $st->getCantidad();					
+					$p = $st->getPaciente();
+					$c = $p->getClinica();
+					if ($c->getId() == $id_clinica) {
+						$numero_establecimiento = $c->getNumero();
+						$consumido_arv += $st->getCantidad();
+					}										
 				}
 				foreach ($compras_arv as $c) {
 					if ($c->numero_producto == $arv->getNumero()) {
-						$cant += $c->cantidad;
+						if ($c->fecha>=$fecha_i && $c->fecha<=$fecha_f) {
+							if ($c->numero_establecimiento == $numero_establecimiento) {
+									$cant+=$c->cantidad;
+								}		
+						}
 					}					
 				}
 				$cantidad['numero'] = $arv->getNumero();
 				$cantidad['nombre'] = $arv->getNombre();
 				$cantidad['abreviatura'] = $arv->getAbreviatura();
 				$cantidad['cantidad'] = $consumido_arv;
-				$cantidad['comprado'] =	$cant;			
+				$cantidad['comprado'] =	$cant;							
 			}
 		}		
 
         $data  = array(
 			'arvs' => $arvs,	
+			'cls' => $cls,
 			'cantidad' => $cantidad,
 			'cantidades' => $cantidades
 		);

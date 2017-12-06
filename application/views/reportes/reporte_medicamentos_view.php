@@ -17,6 +17,13 @@
         $esq[$ar->getId()] = $ar->getNombre().' ('.$ar->getAbreviatura().')';
       }
 
+      $cli = array(
+        'default' => 'Clinica'
+      );
+      foreach ($cls as $cl) {
+        $cli[$cl->getId()] = $cl->getNombre();
+      }
+
       $fecha_i = array(
           'name' => 'fecha_i',
           'placeholder' => 'Ingrese fecha inicial',
@@ -46,6 +53,13 @@
         echo form_label('Fecha fin:', 'fecha_f', $atriLabel);
         echo "<div>";
           echo form_input($fecha_f);
+        echo "</div>";
+      echo "</div>";
+
+      echo "<div class='field'>";
+      echo form_label('Clinica:', 'cli', $atriLabel);
+        echo "<div>";
+          echo form_dropdown('clinica', $cli, 'default',$select);
         echo "</div>";
       echo "</div>";
 

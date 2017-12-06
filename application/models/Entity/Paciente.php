@@ -24,8 +24,8 @@ class Paciente
     * @Column(type="string", name="fecha_diagnostico_vih")
     */
     protected $fecha;
-     /**
-     * @OneToOne(targetEntity="Clinica")
+    /**
+     * @ManyToOne(targetEntity="Clinica", inversedBy="pacientes_cli")
      * @JoinColumn(name="id_clinica", referencedColumnName="id_clinica")
      */
     protected $clinica;

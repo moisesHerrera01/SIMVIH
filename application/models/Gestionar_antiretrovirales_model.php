@@ -36,12 +36,39 @@ class Gestionar_antiretrovirales_model extends CI_Model
 
 	}
 
-	public function getReporteMedicamentos($id_medicamento){
+	public function getReporteMedicamento($medicamento, $fecha_inicial, $fecha_final){
 		$data = array(
-			'arv' => '', 
+			'arv' => '',
+			'datos' =>''
 		);
-		$arv= $this->em->find('Entity\\Antiretroviral',$id_medicamento);
+       $arvs = $this->em->createQueryBuilder()
+                        ->select('a, b')
+                        ->from('Entity\\Antiretroviral', 'a')
+                        ->innerJoin('a.arv_estados', 'b')
+                        ->innerJoin('Entity\\Paciente', 'c', 'WITH', 'b.paciente = c.id')
+                        ->where('a.id = ?1')
+                        ->where('b.fecha_arv between ?2 AND ?3')
+                        ->setParameter( 1, $medicamento )
+                        ->setParameters( array( '2' => $fecha_inicial, '3' => $fecha_final ) )   
+                        ->getQuery()
+                        ->execute();
+
+		$arv= $this->em->find('Entity\\Antiretroviral',$medicamento);
 		$data['arv'] = $arv;
+		$data['datos'] = $arvs; 
 		return $data;
+	}
+
+	public function getReporteMedicamentos($fecha_inicial, $fecha_final){
+       $arvs = $this->em->createQueryBuilder()
+                        ->select('a, b')
+                        ->from('Entity\\Antiretroviral', 'a')
+                        ->innerJoin('a.arv_estados', 'b')
+                        ->innerJoin('Entity\\Paciente', 'c', 'WITH', 'b.paciente = c.id')
+                        ->where('b.fecha_arv between ?2 AND ?3')
+                        ->setParameters( array( '2' => $fecha_inicial, '3' => $fecha_final ) )
+                        ->getQuery()
+                        ->execute();
+        return $arvs;
 	}
 }
