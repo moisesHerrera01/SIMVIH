@@ -77,15 +77,19 @@
   </div>
 </section>
 <?php
-if($this->input->get('arv')!='default' && $this->input->get('arv')!=NULL):
-  $this->table->set_heading('Nombre ARV','Abreviatura','Número de producto','Cantidad compras','Cantidad consumida');
+$id_arv = $this->input->get('arv');
+$fecha_i = $this->input->get('fecha_i');
+$fecha_f = $this->input->get('fecha_f');
+$id_clinica = $this->input->get('clinica');
+$this->table->set_heading('Nombre ARV','Abreviatura','Número de producto','Cantidad comprado','Cantidad consumida');
+
+if($fecha_i!='' && $fecha_f!='' && $id_arv!='default' && $id_clinica!='default'):  
   $this->table->add_row($cantidad['nombre'] ,$cantidad['abreviatura'] ,$cantidad['numero'] ,$cantidad['comprado'] ,$cantidad['cantidad']);
   echo '<section>';
     echo $this->table->generate();
   echo '</section>';  
-elseif ($this->input->get('arv')=='default'):
-  foreach ($cantidades as $c) {
-      $this->table->set_heading('Nombre ARV','Abreviatura','Número de producto','Cantidad compras','Consumido');
+elseif ($id_arv =='default' && $fecha_i!='' && $fecha_f!='' && $id_clinica!='default'):
+  foreach ($cantidades as $c) {      
       $this->table->add_row($c['nombre'], $c['abreviatura'], $c['numero'] , $c['comprado'] , $c['cantidad']);         
   }
   echo '<section>';

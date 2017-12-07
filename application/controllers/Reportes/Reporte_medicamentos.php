@@ -6,6 +6,13 @@ class Reporte_medicamentos extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		if (!$this->session->userdata('logged_in')){
+			redirect('login/index/nosesion');
+        }
+        
+        if ( $this->session->userdata('rol') == 'Promotor' ) {
+			redirect('dashboard/index/norol');
+		}
 	}
 
 	public function index() {
@@ -18,7 +25,7 @@ class Reporte_medicamentos extends CI_Controller {
 		$cls = $this->Gestionar_pacientes_model->getClinicas();
 
 
-		if ($this->input->get('fecha_i') && $this->input->get('fecha_f') && $this->input->get('clinica')) {
+		if ($this->input->get('fecha_i') && $this->input->get('fecha_f') && $this->input->get('clinica')!='default') {
 			$numero_establecimiento; //numero de establecimiento de la clinica
 			$fecha_i = $this->input->get('fecha_i');
 			$fecha_f = $this->input->get('fecha_f');
@@ -73,13 +80,16 @@ class Reporte_medicamentos extends CI_Controller {
 
 				$data_reporte = $this->Gestionar_antiretrovirales_model->getReporteMedicamento($id_arv, $fecha_i, $fecha_f);
 				$arv;
+				$validador=0;
 				$json = 'http://localhost/restserver/index.php/compras/compras/format/json';
-				$compras_arv  = json_decode(file_get_contents($json));
-				foreach ($data_reporte['datos'] as $ar) {
+				$compras_arv  = json_decode(file_get_contents($json));				
+					foreach ($data_reporte['datos'] as $ar) {
 					if ($ar->getId() == $id_arv) {
 						$arv = $ar;
+						$validador++;
 					}					
 				}
+				if ($validador>0) {
 				$arv_estados = $arv->getArvEstados();
 
 				foreach ($arv_estados as $st) {
@@ -103,7 +113,11 @@ class Reporte_medicamentos extends CI_Controller {
 				$cantidad['nombre'] = $arv->getNombre();
 				$cantidad['abreviatura'] = $arv->getAbreviatura();
 				$cantidad['cantidad'] = $consumido_arv;
-				$cantidad['comprado'] =	$cant;							
+				$cantidad['comprado'] =	$cant;	
+				}else{
+					redirect($this->config->base_url()."Reportes/Reporte_medicamentos");
+				}
+										
 			}
 		}		
 
