@@ -64,10 +64,10 @@ class Clinica extends \Entity\Clinica implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'nombre', 'direccion', 'pacientes_cli'];
+            return ['__isInitialized__', 'id', 'nombre', 'numero', 'direccion', 'pacientes_cli'];
         }
 
-        return ['__isInitialized__', 'id', 'nombre', 'direccion', 'pacientes_cli'];
+        return ['__isInitialized__', 'id', 'nombre', 'numero', 'direccion', 'pacientes_cli'];
     }
 
     /**
@@ -208,6 +208,28 @@ class Clinica extends \Entity\Clinica implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNombre', [$nombre]);
 
         return parent::setNombre($nombre);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getNumero()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNumero', []);
+
+        return parent::getNumero();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setNumero($numero)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNumero', [$numero]);
+
+        return parent::setNumero($numero);
     }
 
     /**
