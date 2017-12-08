@@ -54,7 +54,7 @@
             </tr>
             <tr>
                 <td>Número de expediente:</td>
-                <td><?= $paciente->getNumero() ?></td>
+                <td><?= $paciente_estado->getPaciente()->getNumero() ?></td>
                 <td>Fecha de apertura:</td>
                 <td><?= $expediente->fecha_apertura ?></td>
             </tr>
@@ -102,7 +102,7 @@
             <tr>
                 <td colspan="4">Enfermedad:</td>
             </tr>
-            <?php foreach ($paciente->getEnfermedades() as $enfermdad): ?>
+            <?php foreach ($paciente_estado->getPaciente()->getEnfermedades() as $enfermdad): ?>
                 <tr>
                     <td>Nombre:</td>
                     <td colspan="3" ><?= $enfermdad->getNombre()?></td>
@@ -117,11 +117,11 @@
             </tr>
             <tr>
                 <td>Nombre:</td>
-                <td colspan="3" ><?= $paciente->getClinica()->getNombre()?></td>
+                <td colspan="3" ><?= $paciente_estado->getPaciente()->getClinica()->getNombre()?></td>
             </tr>
             <tr>
                 <td>Dirección:</td>
-                <td colspan="3" ><?= $paciente->getClinica()->getDireccion()?></td>
+                <td colspan="3" ><?= $paciente_estado->getPaciente()->getClinica()->getDireccion()?></td>
             </tr>
         </tbody>
     </table>

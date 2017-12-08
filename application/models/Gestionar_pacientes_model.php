@@ -90,6 +90,7 @@ class Gestionar_pacientes_model extends CI_Model
 						->innerJoin('Entity\\PacienteEstado', 'd', 'WITH', 'a.id = d.paciente')
 						->where('a.id = ?1')
 						->setParameter(1, $id)
+						->addOrderBy('d.id', 'DESC')
 						->getQuery()
 						->execute();
 		
