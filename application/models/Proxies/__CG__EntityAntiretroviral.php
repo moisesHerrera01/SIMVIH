@@ -64,10 +64,10 @@ class Antiretroviral extends \Entity\Antiretroviral implements \Doctrine\ORM\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'nombre', 'abreviatura', 'numero', 'descripcion'];
+            return ['__isInitialized__', 'id', 'nombre', 'abreviatura', 'numero', 'descripcion', '' . "\0" . 'Entity\\Antiretroviral' . "\0" . 'arv_estados'];
         }
 
-        return ['__isInitialized__', 'id', 'nombre', 'abreviatura', 'numero', 'descripcion'];
+        return ['__isInitialized__', 'id', 'nombre', 'abreviatura', 'numero', 'descripcion', '' . "\0" . 'Entity\\Antiretroviral' . "\0" . 'arv_estados'];
     }
 
     /**
@@ -274,6 +274,17 @@ class Antiretroviral extends \Entity\Antiretroviral implements \Doctrine\ORM\Pro
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescripcion', [$descripcion]);
 
         return parent::setDescripcion($descripcion);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getArvEstados()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getArvEstados', []);
+
+        return parent::getArvEstados();
     }
 
 }

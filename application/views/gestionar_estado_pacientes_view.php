@@ -1,4 +1,18 @@
 <?= $this->load->view('header_view', array('titulo' => 'Estado paciente' ), TRUE) ?>
+<br>
+<div class="ui grid">
+  <div class="ui five wide column"></div>
+  <div class="ui eight wide column">
+    <div class="ui hidden message" id="mensajeSuccess">
+      <i class="close icon"></i>
+      <div class="header ">
+        ¡Estado del paciente ingresado exitosamente!
+      </div>
+      <p></p>
+    </div>
+  </div>
+</div>
+<br>
 
 <section>
   <div class="ui text container segment">
@@ -246,4 +260,13 @@
   </div>
   <a href=<?= $this->config->base_url()."Gestionar_pacientes/" ?>>Atras</a>
 </section>
+<script>
+
+  $(document).ready(function () {
+    if ("<?= $this->uri->segment(4)?>" == "success"){
+      $("#mensajeSuccess").removeClass("hidden");
+      $("#mensajeSuccess").addClass("green");
+    }
+  });
+</script>
 <?= $this->load->view('footer_view', '', TRUE) ?>

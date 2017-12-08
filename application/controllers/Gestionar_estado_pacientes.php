@@ -39,7 +39,7 @@ class Gestionar_estado_pacientes extends CI_Controller {
 
 		$result = $this->Gestionar_estado_pacientes_model->createEstadoPaciente($data);
 
-		redirect($this->config->base_url()."Gestionar_estado_pacientes/index/".$data['id_paciente']);
+		redirect($this->config->base_url()."Gestionar_estado_pacientes/index/".$data['id_paciente'].'/success');
 	
 	}
 }

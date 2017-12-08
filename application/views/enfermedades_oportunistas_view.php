@@ -5,7 +5,7 @@
     <h1 class"ui header">Enfermedades oportunistas</h1>
     <?php
          $template = array(
-        'table_open' => '<table border="1" cellpadding="2" cellspacing="1" class="ui single line celled table">'
+        'table_open' => '<table class="ui fixed table">'
       );
        $this->table->set_template($template);
     echo validation_errors();

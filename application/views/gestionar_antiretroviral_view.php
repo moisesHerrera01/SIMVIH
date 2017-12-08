@@ -78,7 +78,7 @@
     echo form_close();
 
     $template = array(
-        'table_open' => '<table class="ui single line celled table">'
+        'table_open' => '<table class="ui fixed table">'
     );
     $this->table->set_template($template);
     
